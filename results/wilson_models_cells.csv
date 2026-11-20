@@ -1,0 +1,113 @@
+model,H,info,n,pred_ng,pred_more_inf
+OBSERVED,1,equal,4800,0.13,
+OBSERVED,1,unequal,4800,0.17833333333333334,0.49854166666666666
+OBSERVED,6,equal,4800,0.24229166666666666,
+OBSERVED,6,unequal,4800,0.28458333333333335,0.5897916666666667
+softmax (mu),1,equal,4800,0.25301009844305433,
+softmax (mu),1,unequal,4800,0.2446063439063603,0.5119387386947097
+softmax (mu),6,equal,4800,0.2535582989330615,
+softmax (mu),6,unequal,4800,0.24507543400907233,0.5065558719194984
+Thompson (tempered),1,equal,4800,0.24995233963649544,
+Thompson (tempered),1,unequal,4800,0.2650022371171947,0.5108026867970923
+Thompson (tempered),6,equal,4800,0.25046433246663174,
+Thompson (tempered),6,unequal,4800,0.26535311862225813,0.5063700464024178
+UCB-softmax,1,equal,4800,0.2526995472055494,
+UCB-softmax,1,unequal,4800,0.24435659866970913,0.5468287007054342
+UCB-softmax,6,equal,4800,0.25324990566210415,
+UCB-softmax,6,unequal,4800,0.2458828116756275,0.5415046231465692
+"future-path, q=U_D",1,equal,4800,0.18721207853440378,
+"future-path, q=U_D",1,unequal,4800,0.18692648443272702,0.5150395705410189
+"future-path, q=U_D",6,equal,4800,0.369191519603557,
+"future-path, q=U_D",6,unequal,4800,0.3677494907949571,0.503153045098328
+"future-path, calib. q",1,equal,4800,0.20079597916564249,
+"future-path, calib. q",1,unequal,4800,0.2006078997572163,0.5142711860761673
+"future-path, calib. q",6,equal,4800,0.3224909360371803,
+"future-path, calib. q",6,unequal,4800,0.3168777981858393,0.5052902559514384
+softmax (per-H tau),1,equal,4800,0.20061270973661088,
+softmax (per-H tau),1,unequal,4800,0.19239679353359887,0.5147668411739017
+softmax (per-H tau),6,equal,4800,0.2992315464927245,
+softmax (per-H tau),6,unequal,4800,0.29121420741105575,0.5058068810993818
+"C0  softmax, tau_H + B",1,equal,4800,0.20060308761828424,
+"C0  softmax, tau_H + B",1,unequal,4800,0.1927243799951328,0.5147682616545162
+"C0  softmax, tau_H + B",6,equal,4800,0.29932862878310723,
+"C0  softmax, tau_H + B",6,unequal,4800,0.29077133425475077,0.5057625932617335
+"C3  Thompson, tau_H + B",1,equal,4800,0.20396853149971725,
+"C3  Thompson, tau_H + B",1,unequal,4800,0.2187595396208007,0.5132845429025628
+"C3  Thompson, tau_H + B",6,equal,4800,0.29234295126617105,
+"C3  Thompson, tau_H + B",6,unequal,4800,0.30602324423817523,0.5055941237924894
+"C2  UCB, beta_H + tau_H + B",1,equal,4800,0.20012553749022507,
+"C2  UCB, beta_H + tau_H + B",1,unequal,4800,0.19330275927630886,0.498541661227708
+"C2  UCB, beta_H + tau_H + B",6,equal,4800,0.2966867161316694,
+"C2  UCB, beta_H + tau_H + B",6,unequal,4800,0.29367120963854026,0.5897916661681485
+"C1  Wilson, A_H + sigma_H + B",1,equal,4800,0.20012554004748861,
+"C1  Wilson, A_H + sigma_H + B",1,unequal,4800,0.19330276148097986,0.4985416643205277
+"C1  Wilson, A_H + sigma_H + B",6,equal,4800,0.29668671870671554,
+"C1  Wilson, A_H + sigma_H + B",6,unequal,4800,0.29367121146391933,0.5897916610791925
+"C1' Wilson, A_H + sigma_HxI + B",1,equal,4800,0.1807650379727549,
+"C1' Wilson, A_H + sigma_HxI + B",1,unequal,4800,0.2109277688765604,0.49854165639476056
+"C1' Wilson, A_H + sigma_HxI + B",6,equal,4800,0.278458570970828,
+"C1' Wilson, A_H + sigma_HxI + B",6,unequal,4800,0.3106414874283189,0.5897916717314385
+"C4  Gershman, w_H + b",1,equal,4800,0.1984679006541048,
+"C4  Gershman, w_H + b",1,unequal,4800,0.22457736036155523,0.49946826642178765
+"C4  Gershman, w_H + b",6,equal,4800,0.2849306632993638,
+"C4  Gershman, w_H + b",6,unequal,4800,0.31453317431062866,0.5905220494791592
+F1  future-path calib. q + B,1,equal,4800,0.20070256426957825,
+F1  future-path calib. q + B,1,unequal,4800,0.20079466968298773,0.5142771131178314
+F1  future-path calib. q + B,6,equal,4800,0.3227011767963363,
+F1  future-path calib. q + B,6,unequal,4800,0.31667517318658617,0.5052685991827116
+F2  future-path calib. q + A_H + B,1,equal,4800,0.20020297406243465,
+F2  future-path calib. q + A_H + B,1,unequal,4800,0.20116624985217163,0.49980012930430867
+F2  future-path calib. q + A_H + B,6,equal,4800,0.3215208887674363,
+F2  future-path calib. q + A_H + B,6,unequal,4800,0.3190663120291602,0.5906280658046152
+F2u future-path q=U_D + A_H + B,1,equal,4800,0.1866370988790982,
+F2u future-path q=U_D + A_H + B,1,unequal,4800,0.18750834766686628,0.5000249487835514
+F2u future-path q=U_D + A_H + B,6,equal,4800,0.36899085972672824,
+F2u future-path q=U_D + A_H + B,6,unequal,4800,0.3688374751412761,0.5867472242069588
+L1  C1 with probit link,1,equal,4800,0.21621475902962015,
+L1  C1 with probit link,1,unequal,4800,0.20878632193877575,0.49968348402538726
+L1  C1 with probit link,6,equal,4800,0.3022361831767586,
+L1  C1 with probit link,6,unequal,4800,0.2978889444948904,0.5900134301179792
+L2  F1 with logistic link,1,equal,4800,0.18539728389154314,
+L2  F1 with logistic link,1,unequal,4800,0.18531775678504975,0.5151754831160925
+L2  F1 with logistic link,6,equal,4800,0.31003895517969193,
+L2  F1 with logistic link,6,unequal,4800,0.30446702684529486,0.5052422717214514
+L3  F2 with logistic link,1,equal,4800,0.18495779807790516,
+L3  F2 with logistic link,1,unequal,4800,0.185971685283023,0.49854166122795857
+L3  F2 with logistic link,6,equal,4800,0.3082279359643916,
+L3  F2 with logistic link,6,unequal,4800,0.30732806832945947,0.5890897466778895
+"C0+e softmax, tau_H + B + lapse",1,equal,4800,0.16088387525191444,
+"C0+e softmax, tau_H + B + lapse",1,unequal,4800,0.157211021358578,0.5168787327315867
+"C0+e softmax, tau_H + B + lapse",6,equal,4800,0.2780996851453253,
+"C0+e softmax, tau_H + B + lapse",6,unequal,4800,0.2707845478495255,0.5054425123346864
+"C3+e Thompson, tau_H + B + lapse",1,equal,4800,0.15745778171577252,
+"C3+e Thompson, tau_H + B + lapse",1,unequal,4800,0.16178390900696527,0.5167085940959997
+"C3+e Thompson, tau_H + B + lapse",6,equal,4800,0.27110593399735666,
+"C3+e Thompson, tau_H + B + lapse",6,unequal,4800,0.281953498117554,0.5054039169621851
+"C2+e UCB, beta_H + tau_H + B + lapse",1,equal,4800,0.15701267216221798,
+"C2+e UCB, beta_H + tau_H + B + lapse",1,unequal,4800,0.1562833945670064,0.4957830343877688
+"C2+e UCB, beta_H + tau_H + B + lapse",6,equal,4800,0.2784233412739932,
+"C2+e UCB, beta_H + tau_H + B + lapse",6,unequal,4800,0.28071979188064905,0.5818133765505457
+"C1+e Wilson, A_H + sigma_H + B + lapse",1,equal,4800,0.15701266969296043,
+"C1+e Wilson, A_H + sigma_H + B + lapse",1,unequal,4800,0.15628339248254564,0.4957830333714109
+"C1+e Wilson, A_H + sigma_H + B + lapse",6,equal,4800,0.27842334439551775,
+"C1+e Wilson, A_H + sigma_H + B + lapse",6,unequal,4800,0.2807197956602447,0.5818133802328538
+"C1'+e Wilson, A_H + sigma_HxI + B + lapse",1,equal,4800,0.14101725620600486,
+"C1'+e Wilson, A_H + sigma_HxI + B + lapse",1,unequal,4800,0.1723701049805364,0.4965613233223761
+"C1'+e Wilson, A_H + sigma_HxI + B + lapse",6,equal,4800,0.25156878350709194,
+"C1'+e Wilson, A_H + sigma_HxI + B + lapse",6,unequal,4800,0.3025139814359431,0.5827600733555565
+"C4+e Gershman, w_H + b + lapse",1,equal,4800,0.1429942281602538,
+"C4+e Gershman, w_H + b + lapse",1,unequal,4800,0.17206088630293945,0.4968743605649685
+"C4+e Gershman, w_H + b + lapse",6,equal,4800,0.25281650258248844,
+"C4+e Gershman, w_H + b + lapse",6,unequal,4800,0.30445241484882063,0.5850087777570191
+F1+e future-path calib. q + B + lapse,1,equal,4800,0.1592731320724192,
+F1+e future-path calib. q + B + lapse,1,unequal,4800,0.15850759612765217,0.5169054834681313
+F1+e future-path calib. q + B + lapse,6,equal,4800,0.26939612516521105,
+F1+e future-path calib. q + B + lapse,6,unequal,4800,0.26614892426482517,0.5050485519636264
+F2u+e future-path q=U_D + A_H + B + lapse,1,equal,4800,0.15733542811413972,
+F2u+e future-path q=U_D + A_H + B + lapse,1,unequal,4800,0.15895769677927626,0.4964696952533355
+F2u+e future-path q=U_D + A_H + B + lapse,6,equal,4800,0.2670749727037119,
+F2u+e future-path q=U_D + A_H + B + lapse,6,unequal,4800,0.2712730151129786,0.5801117408416123
+F0+e future-path lambda=0 + A_H + B + lapse,1,equal,4800,0.18118420312509512,
+F0+e future-path lambda=0 + A_H + B + lapse,1,unequal,4800,0.1823893283113623,0.49721685015598394
+F0+e future-path lambda=0 + A_H + B + lapse,6,equal,4800,0.25217241577104355,
+F0+e future-path lambda=0 + A_H + B + lapse,6,unequal,4800,0.2574360871916917,0.5808916688709568

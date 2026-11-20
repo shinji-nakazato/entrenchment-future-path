@@ -1,0 +1,6 @@
+priorvar1 Wu1D: n=9720, subjects=81
+priorvar1 Wu2D: n=19200, subjects=80
+priorvar300 Wu1D: n=9720, subjects=81
+priorvar300 Wu2D: n=19200, subjects=80
+wu Wu1D: n=9720, subjects=81
+wu Wu2D: n=19200, subjects=80

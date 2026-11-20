@@ -1,0 +1,59 @@
+=== equal games (n=9,600): FP q=U_D (rho = 8) AIC 8647.2, FP q=U_D (rho free) AIC 8624.0, value-free RE: softmax + lapse_H AIC 8637.1
+[P(non-greedy) by posterior-gap quintile x H]
+                 non_greedy  FP q=U_D (rho = 8)  FP q=U_D (rho free)  value-free RE: softmax + lapse_H
+H gbin                                                                                                
+1 (-0.001, 5.4]       0.286               0.334                0.308                             0.322
+  (5.4, 10.5]         0.121               0.132                0.111                             0.127
+  (10.5, 17.5]        0.099               0.089                0.087                             0.085
+  (17.5, 25.5]        0.081               0.086                0.086                             0.079
+  (25.5, 55.5]        0.068               0.086                0.086                             0.079
+6 (-0.001, 5.4]       0.371               0.424                0.398                             0.374
+  (5.4, 10.5]         0.280               0.292                0.259                             0.230
+  (10.5, 17.5]        0.209               0.205                0.203                             0.199
+  (17.5, 25.5]        0.189               0.160                0.182                             0.195
+  (25.5, 55.5]        0.157               0.135                0.172                             0.195
+[horizon effect (H6 - H1) by gap quintile]
+               non_greedy  FP q=U_D (rho = 8)  FP q=U_D (rho free)  value-free RE: softmax + lapse_H
+gbin                                                                                                
+(-0.001, 5.4]      +0.085              +0.090               +0.090                            +0.052
+(5.4, 10.5]        +0.160              +0.160               +0.148                            +0.103
+(10.5, 17.5]       +0.110              +0.117               +0.116                            +0.114
+(17.5, 25.5]       +0.108              +0.073               +0.095                            +0.116
+(25.5, 55.5]       +0.090              +0.048               +0.085                            +0.116
+
+  subject level AIC: sum FP q=U_D (rho = 8)=7662.4, FP q=U_D (rho free)=7722.6, value-free RE: softmax + lapse_H=7629.9 | n best FP q=U_D (rho = 8)=36, FP q=U_D (rho free)=1, value-free RE: softmax + lapse_H=23 | PXP FP q=U_D (rho = 8)=0.807, FP q=U_D (rho free)=0.001, value-free RE: softmax + lapse_H=0.191 | BOR=0.00381
+  subject level BIC: sum FP q=U_D (rho = 8)=8215.9, FP q=U_D (rho free)=8460.7, value-free RE: softmax + lapse_H=8367.9 | n best FP q=U_D (rho = 8)=48, FP q=U_D (rho free)=0, value-free RE: softmax + lapse_H=12 | PXP FP q=U_D (rho = 8)=1.000, FP q=U_D (rho free)=0.000, value-free RE: softmax + lapse_H=0.000 | BOR=4.11e-12
+  parametric bootstrap (50 sims; generators = per-subject MLE clipped 10-90 pct, shrunk toward pooled)
+   dAIC = AIC(value-free) - AIC(FP q=U_D (rho = 8)); observed -10.1
+     shrink 0.0, generator FP q=U_D (rho = 8)                : mean   +49.9 (5-95%: +28.4 to +70.3); P(FP chosen) = 1.00; P(dAIC >= observed) = 1.00
+     shrink 0.0, generator value-free RE: softmax + lapse_H  : mean   -66.4 (5-95%: -97.5 to -41.0); P(FP chosen) = 0.00; P(dAIC >= observed) = 0.00
+     shrink 0.5, generator FP q=U_D (rho = 8)                : mean   +45.3 (5-95%: +30.2 to +65.0); P(FP chosen) = 1.00; P(dAIC >= observed) = 1.00
+     shrink 0.5, generator value-free RE: softmax + lapse_H  : mean  -111.5 (5-95%: -148.1 to -72.4); P(FP chosen) = 0.00; P(dAIC >= observed) = 0.00
+     shrink 1.0, generator FP q=U_D (rho = 8)                : mean    +7.0 (5-95%: -16.0 to +28.5); P(FP chosen) = 0.66; P(dAIC >= observed) = 0.90
+     shrink 1.0, generator value-free RE: softmax + lapse_H  : mean   -98.0 (5-95%: -130.9 to -67.9); P(FP chosen) = 0.00; P(dAIC >= observed) = 0.00
+   dAIC = AIC(value-free) - AIC(FP q=U_D (rho free)); observed +13.1
+     shrink 0.0, generator FP q=U_D (rho = 8)                : mean   +48.8 (5-95%: +28.7 to +70.2); P(FP chosen) = 1.00; P(dAIC >= observed) = 1.00
+     shrink 0.0, generator value-free RE: softmax + lapse_H  : mean   -16.3 (5-95%: -30.6 to -1.1); P(FP chosen) = 0.04; P(dAIC >= observed) = 0.00
+     shrink 0.5, generator FP q=U_D (rho = 8)                : mean   +45.2 (5-95%: +31.0 to +63.5); P(FP chosen) = 1.00; P(dAIC >= observed) = 1.00
+     shrink 0.5, generator value-free RE: softmax + lapse_H  : mean   -21.2 (5-95%: -33.9 to -9.6); P(FP chosen) = 0.00; P(dAIC >= observed) = 0.00
+     shrink 1.0, generator FP q=U_D (rho = 8)                : mean   +10.1 (5-95%: -12.1 to +29.0); P(FP chosen) = 0.80; P(dAIC >= observed) = 0.36
+     shrink 1.0, generator value-free RE: softmax + lapse_H  : mean   -23.8 (5-95%: -37.6 to -9.0); P(FP chosen) = 0.00; P(dAIC >= observed) = 0.00
+
+=== all games (n=19,200): F2u+e (rho = 8) AIC 18222.7, F2u+e (rho free) AIC 18205.7, value-free RE + A_H AIC 18328.6
+  subject level AIC: sum F2u+e (rho = 8)=16025.3, F2u+e (rho free)=16066.6, value-free RE + A_H=16014.9 | n best F2u+e (rho = 8)=31, F2u+e (rho free)=7, value-free RE + A_H=22 | PXP F2u+e (rho = 8)=0.722, F2u+e (rho free)=0.018, value-free RE + A_H=0.260 | BOR=0.0551
+  subject level BIC: sum F2u+e (rho = 8)=17155.8, F2u+e (rho free)=17423.2, value-free RE + A_H=17371.5 | n best F2u+e (rho = 8)=48, F2u+e (rho free)=1, value-free RE + A_H=11 | PXP F2u+e (rho = 8)=1.000, F2u+e (rho free)=0.000, value-free RE + A_H=0.000 | BOR=4.98e-12
+  parametric bootstrap (50 sims; generators = per-subject MLE clipped 10-90 pct, shrunk toward pooled)
+   dAIC = AIC(value-free) - AIC(F2u+e (rho = 8)); observed +106.0
+     shrink 0.0, generator F2u+e (rho = 8)                   : mean   +93.4 (5-95%: +65.0 to +120.9); P(FP chosen) = 1.00; P(dAIC >= observed) = 0.30
+     shrink 0.0, generator value-free RE + A_H               : mean   -84.4 (5-95%: -116.2 to -50.2); P(FP chosen) = 0.00; P(dAIC >= observed) = 0.00
+     shrink 0.5, generator F2u+e (rho = 8)                   : mean  +113.3 (5-95%: +82.2 to +147.5); P(FP chosen) = 1.00; P(dAIC >= observed) = 0.60
+     shrink 0.5, generator value-free RE + A_H               : mean   -96.9 (5-95%: -131.8 to -63.2); P(FP chosen) = 0.00; P(dAIC >= observed) = 0.00
+     shrink 1.0, generator F2u+e (rho = 8)                   : mean   +89.1 (5-95%: +58.3 to +130.5); P(FP chosen) = 1.00; P(dAIC >= observed) = 0.22
+     shrink 1.0, generator value-free RE + A_H               : mean   -17.3 (5-95%: -56.4 to +15.7); P(FP chosen) = 0.18; P(dAIC >= observed) = 0.00
+   dAIC = AIC(value-free) - AIC(F2u+e (rho free)); observed +122.9
+     shrink 0.0, generator F2u+e (rho = 8)                   : mean   +92.4 (5-95%: +64.4 to +121.3); P(FP chosen) = 1.00; P(dAIC >= observed) = 0.06
+     shrink 0.0, generator value-free RE + A_H               : mean   -46.2 (5-95%: -63.7 to -21.9); P(FP chosen) = 0.00; P(dAIC >= observed) = 0.00
+     shrink 0.5, generator F2u+e (rho = 8)                   : mean  +112.6 (5-95%: +81.2 to +146.6); P(FP chosen) = 1.00; P(dAIC >= observed) = 0.32
+     shrink 0.5, generator value-free RE + A_H               : mean   -35.9 (5-95%: -57.6 to -13.0); P(FP chosen) = 0.02; P(dAIC >= observed) = 0.00
+     shrink 1.0, generator F2u+e (rho = 8)                   : mean   +88.2 (5-95%: +59.1 to +128.6); P(FP chosen) = 1.00; P(dAIC >= observed) = 0.10
+     shrink 1.0, generator value-free RE + A_H               : mean   +14.2 (5-95%: -10.1 to +40.8); P(FP chosen) = 0.84; P(dAIC >= observed) = 0.00

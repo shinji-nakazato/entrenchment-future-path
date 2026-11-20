@@ -1,0 +1,6 @@
+Cross-dataset figure data (Wu: GP specification of Wu et al. 2018)
+
+dataset  Dsize  mean  size
+ Wilson      2 0.190 48000
+  Wu 1D     30 0.907  8424
+  Wu 2D    121 0.884 18560

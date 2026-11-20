@@ -1,0 +1,7 @@
+ priorvar1 Wu1D: n=9,720, non-greedy=0.8991
+ priorvar1 Wu2D: n=19,200, non-greedy=0.8866
+priorvar300 Wu1D: n=9,720, non-greedy=0.8956
+priorvar300 Wu2D: n=19,200, non-greedy=0.8791
+        wu Wu1D: n=9,720, non-greedy=0.8972
+        wu Wu2D: n=19,200, non-greedy=0.8815
+Wilson: n=67,200 (t=5: 19,200), non-greedy=0.1749

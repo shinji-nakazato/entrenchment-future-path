@@ -1,0 +1,3 @@
+F2u+e with rho free (all games): pooled fit, BIC, and 5-fold subject-level CV (same folds as wilson_models)
+  F2u+e: FP q=U_D + A_H + B (rho = 8): k=5 LL=-9106.337 AIC=18222.67 BIC=18261.99 CV=-9140.44
+  + rho free: k=6 LL=-9096.859 AIC=18205.72 BIC=18252.89 CV=-9132.71

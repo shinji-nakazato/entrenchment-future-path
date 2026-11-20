@@ -1,0 +1,125 @@
+=== Heterogeneous-generator model recovery, family nolapse: per-subject MLE (clipped to 10-90th pct, shrink 1 toward pooled), 50 sims per generator, pooled refit (0.6 min) ===
+           model  mean_p_ng  obs_p_ng
+0        softmax      0.224     0.209
+1            UCB      0.223     0.209
+2         FP U_D      0.232     0.209
+3       FP calib      0.223     0.209
+4  softmax tau_H      0.217     0.209
+
+[confusion, AIC; rows = generator]
+fit_name       softmax   UCB  FP U_D  FP calib  softmax tau_H
+gen_name                                                     
+softmax          0.620 0.220   0.000     0.000          0.160
+UCB              0.000 1.000   0.000     0.000          0.000
+FP U_D           0.000 0.000   0.000     0.280          0.720
+FP calib         0.000 0.000   0.000     0.000          1.000
+softmax tau_H    0.000 0.000   0.000     0.000          1.000
+
+[inversion, AIC]
+fit_name       softmax   UCB  FP U_D  FP calib  softmax tau_H
+gen_name                                                     
+softmax          1.000 0.180     NaN     0.000          0.056
+UCB              0.000 0.820     NaN     0.000          0.000
+FP U_D           0.000 0.000     NaN     1.000          0.250
+FP calib         0.000 0.000     NaN     0.000          0.347
+softmax tau_H    0.000 0.000     NaN     0.000          0.347
+
+[confusion, BIC; rows = generator]
+fit_name       softmax   UCB  FP U_D  FP calib  softmax tau_H
+gen_name                                                     
+softmax          1.000 0.000   0.000     0.000          0.000
+UCB              0.000 1.000   0.000     0.000          0.000
+FP U_D           0.000 0.000   0.000     0.280          0.720
+FP calib         0.000 0.000   0.000     0.000          1.000
+softmax tau_H    0.000 0.000   0.000     0.000          1.000
+
+[inversion, BIC]
+fit_name       softmax   UCB  FP U_D  FP calib  softmax tau_H
+gen_name                                                     
+softmax          1.000 0.000     NaN     0.000          0.000
+UCB              0.000 1.000     NaN     0.000          0.000
+FP U_D           0.000 0.000     NaN     1.000          0.265
+FP calib         0.000 0.000     NaN     0.000          0.368
+softmax tau_H    0.000 0.000     NaN     0.000          0.368
+
+[pair dAIC = AIC(FP calib) - AIC(softmax tau_H); observed +197.56]
+       generator  mean_dAIC  sd_dAIC    q05    q95  P_b_better  P_dAIC_ge_obs
+0        softmax     725.08    52.76 644.56 797.77        1.00           1.00
+1            UCB     708.77    40.90 640.10 762.78        1.00           1.00
+2         FP U_D       6.80    12.15 -15.30  24.94        0.72           0.00
+3       FP calib      56.22    10.42  39.20  69.85        1.00           0.00
+4  softmax tau_H      94.20    11.91  75.77 113.98        1.00           0.00
+
+=== Heterogeneous-generator model recovery, family lapse: per-subject MLE (clipped to 10-90th pct, shrink 1 toward pooled), 50 sims per generator, pooled refit (8.3 min) ===
+   model  mean_p_ng  obs_p_ng
+0   C0+e      0.194     0.209
+1   C1+e      0.194     0.209
+2  C1'+e      0.191     0.209
+3   C4+e      0.198     0.209
+4   F1+e      0.193     0.209
+5  F2u+e      0.196     0.209
+6   F0+e      0.199     0.209
+
+[confusion, AIC; rows = generator]
+fit_name  C0+e  C1+e  C1'+e  C4+e  F1+e  F2u+e  F0+e
+gen_name                                            
+C0+e     0.220 0.000  0.020 0.000 0.480  0.280 0.000
+C1+e     0.000 0.000  0.280 0.000 0.000  0.720 0.000
+C1'+e    0.000 0.000  1.000 0.000 0.000  0.000 0.000
+C4+e     0.000 0.000  0.860 0.000 0.000  0.140 0.000
+F1+e     0.000 0.000  0.000 0.000 0.600  0.400 0.000
+F2u+e    0.000 0.000  0.000 0.000 0.000  1.000 0.000
+F0+e     0.000 0.020  0.980 0.000 0.000  0.000 0.000
+
+[inversion, AIC]
+fit_name  C0+e  C1+e  C1'+e  C4+e  F1+e  F2u+e  F0+e
+gen_name                                            
+C0+e     1.000 0.000  0.006   NaN 0.444  0.110   NaN
+C1+e     0.000 0.000  0.089   NaN 0.000  0.283   NaN
+C1'+e    0.000 0.000  0.318   NaN 0.000  0.000   NaN
+C4+e     0.000 0.000  0.274   NaN 0.000  0.055   NaN
+F1+e     0.000 0.000  0.000   NaN 0.556  0.157   NaN
+F2u+e    0.000 0.000  0.000   NaN 0.000  0.394   NaN
+F0+e     0.000 1.000  0.312   NaN 0.000  0.000   NaN
+
+[confusion, BIC; rows = generator]
+fit_name  C0+e  C1+e  C1'+e  C4+e  F1+e  F2u+e  F0+e
+gen_name                                            
+C0+e     0.220 0.000  0.000 0.000 0.760  0.020 0.000
+C1+e     0.000 0.020  0.020 0.000 0.000  0.960 0.000
+C1'+e    0.000 0.000  0.880 0.000 0.000  0.120 0.000
+C4+e     0.000 0.000  0.440 0.000 0.000  0.560 0.000
+F1+e     0.000 0.000  0.000 0.000 1.000  0.000 0.000
+F2u+e    0.000 0.000  0.000 0.000 0.000  1.000 0.000
+F0+e     0.000 0.520  0.160 0.000 0.000  0.000 0.320
+
+[inversion, BIC]
+fit_name  C0+e  C1+e  C1'+e  C4+e  F1+e  F2u+e  F0+e
+gen_name                                            
+C0+e     1.000 0.000  0.000   NaN 0.432  0.008 0.000
+C1+e     0.000 0.037  0.013   NaN 0.000  0.361 0.000
+C1'+e    0.000 0.000  0.587   NaN 0.000  0.045 0.000
+C4+e     0.000 0.000  0.293   NaN 0.000  0.211 0.000
+F1+e     0.000 0.000  0.000   NaN 0.568  0.000 0.000
+F2u+e    0.000 0.000  0.000   NaN 0.000  0.376 0.000
+F0+e     0.000 0.963  0.107   NaN 0.000  0.000 1.000
+
+[pair dAIC = AIC(C1'+e) - AIC(F2u+e); observed +4.82]
+  generator  mean_dAIC  sd_dAIC     q05    q95  P_b_better  P_dAIC_ge_obs
+0      C0+e      13.73    15.21   -6.90  38.91        0.78           0.66
+1      C1+e      10.63    14.16  -10.08  31.54        0.72           0.68
+2     C1'+e     -54.15    19.46  -80.01 -16.10        0.00           0.00
+3      C4+e     -19.64    16.90  -42.64  10.46        0.14           0.10
+4      F1+e      56.64    13.37   36.09  79.92        1.00           1.00
+5     F2u+e      48.73    14.41   25.19  67.70        1.00           1.00
+6      F0+e     -74.71    18.70 -104.14 -48.14        0.00           0.00
+
+[pair dAIC = AIC(C1+e) - AIC(F2u+e); observed +69.27]
+  generator  mean_dAIC  sd_dAIC    q05    q95  P_b_better  P_dAIC_ge_obs
+0      C0+e      12.92    15.39  -9.91  43.08        0.78           0.00
+1      C1+e      17.50    12.94  -2.53  38.11        0.90           0.00
+2     C1'+e      17.80    11.77  -2.54  33.89        0.92           0.00
+3      C4+e      30.56    11.31  13.62  47.57        0.98           0.00
+4      F1+e      56.60    12.92  36.00  78.40        1.00           0.12
+5     F2u+e      57.23    12.93  34.76  75.32        1.00           0.16
+6      F0+e     -63.81    18.47 -90.75 -38.55        0.00           0.00

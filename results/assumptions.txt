@@ -1,0 +1,66 @@
+Assumption 1 (q), the noise term 2 S rho^2, and the moment-matched probit (Wilson first free choice)
+
+[model variants, games with equal prior observations (n=9,600); all with side bias B and lapse]
+                                          set                         model  k        LL      AIC  lapse           note    dAIC
+games with equal prior observations (n=9,600)            FP q=U_D (rho = 8)  3 -4320.622 8647.243  0.173                 23.255
+games with equal prior observations (n=9,600)       FP q_theta (theta free)  4 -4320.622 8649.243  0.173 theta = 0.0000  25.255
+games with equal prior observations (n=9,600)            FP q=U_D, rho free  4 -4307.994 8623.988  0.173     rho = 1.39   0.000
+games with equal prior observations (n=9,600) exact mixture q=U_D (rho = 8)  3 -4441.755 8889.509  0.145                265.521
+games with equal prior observations (n=9,600) exact mixture q=U_D, rho free  4 -4433.233 8874.466  0.140     rho = 0.47 250.478
+
+[profile likelihood over rho (task value 8), games with equal prior observations (n=9,600); observed P(ng) H1 = 0.130, H6 = 0.242]
+                                          set  rho        LL  pred_H1  pred_H6     dLL
+games with equal prior observations (n=9,600)    2 -4308.053    0.135    0.244   0.000
+games with equal prior observations (n=9,600)    4 -4309.803    0.137    0.245  -1.750
+games with equal prior observations (n=9,600)    6 -4314.400    0.140    0.245  -6.347
+games with equal prior observations (n=9,600)    7 -4317.412    0.142    0.245  -9.359
+games with equal prior observations (n=9,600)    8 -4320.622    0.144    0.245 -12.569
+games with equal prior observations (n=9,600)    9 -4323.855    0.145    0.245 -15.802
+games with equal prior observations (n=9,600)   10 -4326.982    0.147    0.244 -18.929
+games with equal prior observations (n=9,600)   12 -4332.611    0.149    0.243 -24.558
+games with equal prior observations (n=9,600)   16 -4340.759    0.153    0.240 -32.706
+games with equal prior observations (n=9,600)   24 -4348.217    0.157    0.236 -40.164
+
+[model variants, all games (n=19,200); all with side bias B and lapse]
+                 set                                   model  k        LL       AIC  lapse           note    dAIC
+all games (n=19,200)     F2u+e: FP q=U_D + A_H + B (rho = 8)  5 -9106.337 18222.674  0.188                 16.956
+all games (n=19,200)                  + q_theta (theta free)  6 -9106.337 18224.674  0.188 theta = 0.0000  18.956
+all games (n=19,200)                              + rho free  6 -9096.859 18205.718  0.190     rho = 3.64   0.000
+all games (n=19,200) exact mixture q=U_D + A_H + B (rho = 8)  5 -9315.816 18641.633  0.163                435.914
+all games (n=19,200)                exact mixture + rho free  6 -9262.767 18537.534  0.158     rho = 0.00 331.816
+
+[profile likelihood over rho (task value 8), all games (n=19,200); observed P(ng) H1 = 0.154, H6 = 0.263]
+                 set  rho        LL  pred_H1  pred_H6     dLL
+all games (n=19,200)    2 -9097.964    0.150    0.268  -1.034
+all games (n=19,200)    4 -9096.930    0.153    0.269   0.000
+all games (n=19,200)    6 -9099.903    0.155    0.269  -2.974
+all games (n=19,200)    7 -9102.807    0.157    0.269  -5.877
+all games (n=19,200)    8 -9106.337    0.158    0.269  -9.407
+all games (n=19,200)    9 -9110.245    0.159    0.269 -13.316
+all games (n=19,200)   10 -9114.320    0.161    0.269 -17.391
+all games (n=19,200)   12 -9122.368    0.163    0.269 -25.439
+all games (n=19,200)   16 -9136.010    0.166    0.269 -39.080
+all games (n=19,200)   24 -9152.213    0.170    0.267 -55.283
+
+[exact mixture vs moment-matched probit, tau = 1, no bias, q = U_D, rho = 8, equal games: |P_exact - P_mm|]
+ A  mean_abs_diff  max_abs_diff
+ 1         0.0000        0.0000
+ 6         0.0037        0.0072
+
+[H = 6: probability of mixture components with 1 + k <= 0] 0.377
+
+[games with equal prior observations: P(non-greedy) by posterior-gap quintile and horizon, observed vs moment-matched vs exact mixture]
+  moment-matched: tau = 0.340, B = -0.270, lapse = 0.173, LL = -4320.6
+  exact mixture: tau = 0.263, B = -0.191, lapse = 0.145, LL = -4441.8
+                      n   obs    mm    ex
+  H gbin                                 
+  1 (-0.001, 5.4]   915 0.286 0.334 0.290
+    (5.4, 10.5]    1042 0.121 0.132 0.092
+    (10.5, 17.5]   1011 0.099 0.089 0.073
+    (17.5, 25.5]    900 0.081 0.086 0.073
+    (25.5, 55.5]    932 0.068 0.086 0.073
+  6 (-0.001, 5.4]  1005 0.371 0.424 0.419
+    (5.4, 10.5]     902 0.280 0.292 0.331
+    (10.5, 17.5]   1045 0.209 0.205 0.311
+    (17.5, 25.5]    888 0.189 0.160 0.308
+    (25.5, 55.5]    960 0.157 0.135 0.307

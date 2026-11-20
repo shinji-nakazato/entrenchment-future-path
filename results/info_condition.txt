@@ -1,0 +1,93 @@
+Information condition of the Wilson first free choice (n=19,200)
+
+[observed P(non-greedy) by cell and horizon]
+                                             n        p_ng      
+H                                            1     6     1     6
+cell                                                            
+equal prior observations                  4800  4800 0.130 0.242
+unequal, non-greedy to less-observed arm  2301  2357 0.163 0.372
+unequal, non-greedy to more-observed arm  2499  2443 0.192 0.200
+  horizon effect (H6 - H1): equal prior observations: +0.112, unequal, non-greedy to less-observed arm: +0.209, unequal, non-greedy to more-observed arm: +0.008
+  H=1: P(choose less-observed arm | unequal) = 0.499 (n=4,800)
+  H=6: P(choose less-observed arm | unequal) = 0.590 (n=4,800)
+
+[per-subject Wilson et al. (2014) model, P(left) = logistic((dR + A dI + B) / sigma), fit per subject x H]
+  A    : median H1 = -1.32, H6 = 6.21; mean H1 = -1.49, H6 = 8.63; H6 - H1 median = +7.42, t = +4.73, Wilcoxon p = 4e-08, share > 0 = 0.82
+  sigma: median H1 = 6.20, H6 = 13.31; mean H1 = 10.98, H6 = 22.71; H6 - H1 median = +7.06, t = +5.09, Wilcoxon p = 2.4e-11, share > 0 = 0.98
+  share of subjects with A > 0: H1 = 0.37, H6 = 0.77
+
+[P(non-greedy) by cell x H: observed and model-implied (pooled MLE)]
+cell                                        equal prior observations       unequal, non-greedy to less-observed arm       unequal, non-greedy to more-observed arm      
+H                                                                  1     6                                        1     6                                        1     6
+OBSERVED                                                       0.130 0.242                                    0.163 0.372                                    0.192 0.200
+softmax (per-H tau)                                            0.201 0.299                                    0.195 0.293                                    0.190 0.289
+future-path, q=U_D                                             0.187 0.369                                    0.189 0.369                                    0.185 0.367
+future-path, calib. q                                          0.201 0.322                                    0.203 0.319                                    0.199 0.315
+C1  Wilson, A_H + sigma_H + B                                  0.200 0.297                                    0.179 0.381                                    0.207 0.209
+F1  future-path calib. q + B                                   0.201 0.323                                    0.203 0.319                                    0.199 0.315
+F2u future-path q=U_D + A_H + B                                0.187 0.369                                    0.174 0.455                                    0.200 0.286
+C1+e Wilson, A_H + sigma_H + B + lapse                         0.157 0.278                                    0.137 0.360                                    0.174 0.204
+C1'+e Wilson, A_H + sigma_HxI + B + lapse                      0.141 0.252                                    0.155 0.383                                    0.189 0.225
+F1+e future-path calib. q + B + lapse                          0.159 0.269                                    0.161 0.267                                    0.156 0.265
+F2u+e future-path q=U_D + A_H + B + lapse                      0.157 0.267                                    0.141 0.349                                    0.176 0.197
+F0+e future-path lambda=0 + A_H + B + lapse                    0.181 0.252                                    0.166 0.335                                    0.198 0.182
+
+[log-likelihood by cell x H (left/right likelihood)]
+cell                                        equal prior observations         unequal, non-greedy to less-observed arm         unequal, non-greedy to more-observed arm           total
+H                                                                  1       6                                        1       6                                        1       6        
+model                                                                                                                                                                                 
+softmax (per-H tau)                                          -1909.1 -2636.5                                  -1027.4 -1588.5                                  -1136.5 -1239.2 -9537.2
+future-path, q=U_D                                           -1951.8 -2763.8                                  -1063.9 -1526.8                                  -1173.2 -1346.6 -9826.1
+future-path, calib. q                                        -1947.1 -2663.5                                  -1049.0 -1554.4                                  -1155.6 -1266.4 -9636.0
+C1  Wilson, A_H + sigma_H + B                                -1909.2 -2633.9                                  -1020.0 -1552.7                                  -1140.4 -1184.6 -9440.9
+F1  future-path calib. q + B                                 -1947.7 -2663.2                                  -1048.2 -1553.3                                  -1157.0 -1265.0 -9634.4
+F2u future-path q=U_D + A_H + B                              -1952.8 -2762.4                                  -1062.6 -1558.9                                  -1172.0 -1236.7 -9745.4
+C1+e Wilson, A_H + sigma_H + B + lapse                       -1749.1 -2602.7                                   -967.0 -1560.5                                  -1087.6 -1173.1 -9140.0
+C1'+e Wilson, A_H + sigma_HxI + B + lapse                    -1740.0 -2593.7                                   -959.8 -1547.3                                  -1086.1 -1178.8 -9105.7
+F1+e future-path calib. q + B + lapse                        -1754.2 -2581.9                                   -961.4 -1597.1                                  -1102.6 -1200.5 -9197.6
+F2u+e future-path q=U_D + A_H + B + lapse                    -1752.2 -2580.8                                   -964.3 -1547.9                                  -1087.9 -1173.2 -9106.3
+F0+e future-path lambda=0 + A_H + B + lapse                  -1786.2 -2596.5                                   -959.9 -1586.7                                  -1089.2 -1174.8 -9193.2
+
+[log-likelihood deficit vs best model in each cell]
+cell                                        equal prior observations        unequal, non-greedy to less-observed arm       unequal, non-greedy to more-observed arm       
+H                                                                  1      6                                        1     6                                        1      6
+model                                                                                                                                                                     
+softmax (per-H tau)                                           -169.1  -55.7                                    -67.6 -61.7                                    -50.4  -66.1
+future-path, q=U_D                                            -211.8 -183.0                                   -104.1   0.0                                    -87.1 -173.5
+future-path, calib. q                                         -207.1  -82.7                                    -89.2 -27.6                                    -69.5  -93.3
+C1  Wilson, A_H + sigma_H + B                                 -169.3  -53.1                                    -60.1 -25.9                                    -54.3  -11.5
+F1  future-path calib. q + B                                  -207.7  -82.3                                    -88.3 -26.5                                    -70.9  -91.9
+F2u future-path q=U_D + A_H + B                               -212.8 -181.5                                   -102.7 -32.0                                    -86.0  -63.6
+C1+e Wilson, A_H + sigma_H + B + lapse                          -9.1  -21.9                                     -7.2 -33.7                                     -1.5    0.0
+C1'+e Wilson, A_H + sigma_HxI + B + lapse                        0.0  -12.9                                      0.0 -20.5                                      0.0   -5.7
+F1+e future-path calib. q + B + lapse                          -14.2   -1.1                                     -1.6 -70.2                                    -16.5  -27.4
+F2u+e future-path q=U_D + A_H + B + lapse                      -12.3    0.0                                     -4.4 -21.1                                     -1.8   -0.1
+F0+e future-path lambda=0 + A_H + B + lapse                    -46.2  -15.6                                     -0.1 -59.8                                     -3.1   -1.7
+
+[prediction error pred - obs]
+cell                                        equal prior observations        unequal, non-greedy to less-observed arm        unequal, non-greedy to more-observed arm       
+H                                                                  1      6                                        1      6                                        1      6
+model                                                                                                                                                                      
+softmax (per-H tau)                                           +0.071 +0.057                                   +0.032 -0.079                                   -0.002 +0.089
+future-path, q=U_D                                            +0.057 +0.127                                   +0.026 -0.004                                   -0.008 +0.167
+future-path, calib. q                                         +0.071 +0.080                                   +0.040 -0.053                                   +0.006 +0.115
+C1  Wilson, A_H + sigma_H + B                                 +0.070 +0.054                                   +0.016 +0.009                                   +0.014 +0.009
+F1  future-path calib. q + B                                  +0.071 +0.080                                   +0.040 -0.053                                   +0.006 +0.115
+F2u future-path q=U_D + A_H + B                               +0.057 +0.127                                   +0.011 +0.083                                   +0.007 +0.086
+C1+e Wilson, A_H + sigma_H + B + lapse                        +0.027 +0.036                                   -0.026 -0.012                                   -0.019 +0.004
+C1'+e Wilson, A_H + sigma_HxI + B + lapse                     +0.011 +0.009                                   -0.008 +0.011                                   -0.004 +0.025
+F1+e future-path calib. q + B + lapse                         +0.029 +0.027                                   -0.002 -0.105                                   -0.037 +0.065
+F2u+e future-path q=U_D + A_H + B + lapse                     +0.027 +0.025                                   -0.022 -0.023                                   -0.017 -0.004
+F0+e future-path lambda=0 + A_H + B + lapse                   +0.051 +0.010                                   +0.003 -0.037                                   +0.005 -0.018
+
+
+[games with equal prior observations only (n=9,600): horizon dependence of noise without any information difference]
+  observed P(non-greedy): H1 = 0.130, H6 = 0.242, effect = +0.112
+                                           model  k        LL      AIC      BIC     cv_LL  pred_H1  pred_H6                       theta    dAIC
+                       softmax tau_H + B + lapse  4 -4333.452 8674.904 8703.582 -4355.315    0.140    0.252   0.746 2.114 -0.187 -1.435  27.661
+                        probit tau_H + B + lapse  4 -4341.762 8691.523 8720.201 -4363.307    0.141    0.254   1.260 2.632 -0.194 -1.384  44.280
+FP q=U_D + B + lapse (no free horizon parameter)  3 -4320.622 8647.243 8668.752 -4341.308    0.144    0.245        -1.079 -0.270 -1.567   0.000
+                FP lambda=0 + B + lapse (no V_q)  3 -4363.572 8733.143 8754.652 -4383.437    0.166    0.222        -1.106 -0.305 -1.228  85.900
+                    FP calib. lambda + B + lapse  4 -4320.622 8649.243 8677.921 -4341.308    0.144    0.245 -1.079 29.834 -0.270 -1.567   2.000
+                    softmax tau_H + B (no lapse)  3 -4525.858 9057.717 9079.225 -4550.199    0.181    0.278          2.038 2.668 -0.196 410.473
+                         FP q=U_D + B (no lapse)  2 -4703.713 9411.426 9425.765 -4733.927    0.172    0.356               -0.121 -0.050 764.183

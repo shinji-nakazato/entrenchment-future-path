@@ -1,0 +1,28 @@
+Pooled logistic regression diagnostics (Appendix F; Wu: prior-variance-1 specification)
+
+=== (1) McFadden pseudo-R^2: pooled vs within-task ===
+sample                 n   logL_null   logL_full  McFadden
+pooled            96,120    -64291.3    -34332.0     0.466
+within-Wilson     67,200    -31146.9    -28932.1     0.071
+within-Wu1D        9,720     -3179.5     -1630.0     0.487
+within-Wu2D       19,200     -6787.9     -2275.9     0.665
+
+=== (2) Task fixed-effects logit: non_greedy ~ log_A + dmu_std + C(dataset) ===
+(log|D| is collinear with dataset and absorbed; identifies WITHIN-task channels)
+  Intercept             -0.6469  (SE 0.0846, p 2.10e-14)
+  C(dataset)[T.Wu1D]    +2.9870  (SE 0.2246, p 2.42e-40)
+  C(dataset)[T.Wu2D]    +3.1089  (SE 0.2027, p 4.16e-53)
+  log_A                 +0.3183  (SE 0.0427, p 9.01e-14)
+  dmu_std               -0.7143  (SE 0.0788, p 1.28e-19)
+
+=== (3) Collinearity diagnostics (pooled design) ===
+  VIF[const   ] = 4.87
+  VIF[log_A   ] = 1.64
+  VIF[log_D   ] = 1.72
+  VIF[dmu_std ] = 1.11
+  condition number = 7.8
+  corr(log_D, dmu_std) = -0.309
+
+=== (4) Trial-level correlation of V_q and the standardized gap within the Wu data ===
+  Wu1D: corr(V_q, dmu_std) = 0.802  (n=9,720)
+  Wu2D: corr(V_q, dmu_std) = 0.836  (n=19,200)

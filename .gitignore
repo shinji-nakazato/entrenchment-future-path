@@ -1,0 +1,3 @@
+__pycache__/
+*.pyc
+results/ucb_baseline_pertrial.csv.gz

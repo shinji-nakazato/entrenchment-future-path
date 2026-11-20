@@ -1,0 +1,22 @@
+Shape of the horizon effect across posterior-gap quintiles, games with equal prior observations (n=9,600, 60 subjects)
+participant bootstrap with refitting of every model, 2000 resamples; quintile edges fixed at the full-data values
+
+[horizon effect P(ng | H=6) - P(ng | H=1) by quintile]
+  observed            : +0.085  +0.160  +0.110  +0.108  +0.090
+  future-path, rho free                       : +0.090  +0.148  +0.116  +0.095  +0.085
+  future-path, rho = 8                        : +0.090  +0.160  +0.117  +0.073  +0.048
+  value-free random exploration (epsilon_H)   : +0.052  +0.103  +0.114  +0.116  +0.116
+  horizon-specific temperature (tau_H)        : +0.143  +0.202  +0.124  +0.059  +0.019
+
+[Wald test of observed profile = model profile; covariance of (observed - predicted) from the bootstrap]
+  future-path, rho free                       : chi2(5) =   4.70, p = 0.4531
+  future-path, rho = 8                        : chi2(5) =  31.77, p = 0.0000
+  value-free random exploration (epsilon_H)   : chi2(5) =  14.64, p = 0.0120
+  horizon-specific temperature (tau_H)        : chi2(5) =  56.63, p = 0.0000
+
+[shape contrasts: linear trend (slope per quintile) and hump (mean of quintiles 2-4 minus mean of 1 and 5)]
+  observed            : slope -0.0042 [-0.0153, +0.0078]   hump +0.0385 [+0.0148, +0.0656]
+  future-path, rho free                       : slope -0.0062 (obs - model 95% CI [-0.0090, +0.0136])   hump +0.0322 (obs - model 95% CI [-0.0164, +0.0302])
+  future-path, rho = 8                        : slope -0.0171 (obs - model 95% CI [+0.0011, +0.0243])   hump +0.0473 (obs - model 95% CI [-0.0298, +0.0164])
+  value-free random exploration (epsilon_H)   : slope +0.0139 (obs - model 95% CI [-0.0292, -0.0064])   hump +0.0269 (obs - model 95% CI [-0.0105, +0.0363])
+  horizon-specific temperature (tau_H)        : slope -0.0391 (obs - model 95% CI [+0.0240, +0.0440])   hump +0.0473 (obs - model 95% CI [-0.0354, +0.0203])

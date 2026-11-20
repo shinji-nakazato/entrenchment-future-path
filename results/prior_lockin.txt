@@ -1,0 +1,38 @@
+Prior dependence of lock-in
+
+
+[1] Wu: prior mean relative to true values, and the lock-in condition in the observed persistent rounds
+  Wu1D | prior-variance-1 specification: m0=25 on visible scale, sf2=1, noise SD 5
+    share of cells with f(x) above prior mean: all cells 0.751; non-greedy chosen (x != x*_g) 0.855; locked cells 1.000 (rounds locked on a non-optimal cell: 104)
+    lock-in condition mu_t(x*_g) < f(x): at non-greedy choices 0.849; at the start of the locked run 1.000
+  Wu1D | prior-variance-300 specification: m0=50 on visible scale, sf2=300, noise SD 1
+    share of cells with f(x) above prior mean: all cells 0.316; non-greedy chosen (x != x*_g) 0.452; locked cells 0.885 (rounds locked on a non-optimal cell: 104)
+    lock-in condition mu_t(x*_g) < f(x): at non-greedy choices 0.302; at the start of the locked run 0.865
+  Wu1D | Wu specification: (raw-50)/100, m0=0, sf2=1, noise var 1e-4
+    share of cells with f(x) above prior mean: all cells 0.497; non-greedy chosen (x != x*_g) 0.659; locked cells 0.990 (rounds locked on a non-optimal cell: 104)
+    lock-in condition mu_t(x*_g) < f(x): at non-greedy choices 0.457; at the start of the locked run 0.971
+  Wu2D | prior-variance-1 specification: m0=25 on visible scale, sf2=1, noise SD 5
+    share of cells with f(x) above prior mean: all cells 0.800; non-greedy chosen (x != x*_g) 0.916; locked cells 1.000 (rounds locked on a non-optimal cell: 68)
+    lock-in condition mu_t(x*_g) < f(x): at non-greedy choices 0.901; at the start of the locked run 1.000
+  Wu2D | prior-variance-300 specification: m0=50 on visible scale, sf2=300, noise SD 1
+    share of cells with f(x) above prior mean: all cells 0.250; non-greedy chosen (x != x*_g) 0.457; locked cells 0.956 (rounds locked on a non-optimal cell: 68)
+    lock-in condition mu_t(x*_g) < f(x): at non-greedy choices 0.287; at the start of the locked run 0.926
+  Wu2D | Wu specification: (raw-50)/100, m0=0, sf2=1, noise var 1e-4
+    share of cells with f(x) above prior mean: all cells 0.470; non-greedy chosen (x != x*_g) 0.696; locked cells 1.000 (rounds locked on a non-optimal cell: 68)
+    lock-in condition mu_t(x*_g) < f(x): at non-greedy choices 0.443; at the start of the locked run 0.971
+
+[2] Wilson H6 games (n=9,600): flat prior; the frozen estimate of the better arm after the forced trials
+  share of games where the better arm's forced-trial mean is below the worse arm's true mean (lock-in condition): 0.070
+  share where the worse arm is posterior-greedy at t=5: 0.118
+  lock-in condition = 0: n=8,932; last 3 free choices on the worse arm = 0.064; never chooses the better arm in 6 free choices = 0.030; share of worse-arm choices = 0.186
+  lock-in condition = 1: n=668; last 3 free choices on the worse arm = 0.329; never chooses the better arm in 6 free choices = 0.226; share of worse-arm choices = 0.516
+  worse arm greedy at t=5 = 0: n=8,469; locked on worse = 0.052; never best = 0.024
+  worse arm greedy at t=5 = 1: n=1,131; locked on worse = 0.313; never best = 0.195
+  by true mean difference:
+               n   hot  locked_worse  never_best
+  gap_bin                                       
+  (0, 5]    1920 0.226         0.191       0.097
+  (5, 9]    1920 0.090         0.109       0.055
+  (9, 13]   1920 0.033         0.059       0.030
+  (13, 21]  1920 0.000         0.028       0.019
+  (21, 31]  1920 0.000         0.024       0.018

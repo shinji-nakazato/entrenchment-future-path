@@ -1,0 +1,14 @@
+[games with equal prior observations: additional checks (gamma free with lapse; Thompson; outlier participant)]
+                                                         set                            model  k        LL      AIC  lapse        note   dAIC
+                  equal prior observations, all 60 (n=9,600)             FP q=U_D + B + lapse  3 -4320.622 8647.243  0.173              0.000
+                  equal prior observations, all 60 (n=9,600) FP q=U_D, gamma free + B + lapse  4 -4320.622 8649.243  0.173 gamma=1.000  2.000
+                  equal prior observations, all 60 (n=9,600)        softmax tau_H + B + lapse  4 -4333.452 8674.904  0.192             27.661
+                  equal prior observations, all 60 (n=9,600)       Thompson tau_H + B + lapse  4 -4341.762 8691.523  0.200             44.280
+equal prior observations, excluding EE_EE_10-Jul-2014_120840             FP q=U_D + B + lapse  3 -4025.762 8057.525  0.141              0.000
+equal prior observations, excluding EE_EE_10-Jul-2014_120840 FP q=U_D, gamma free + B + lapse  4 -4025.762 8059.525  0.141 gamma=1.000  2.000
+equal prior observations, excluding EE_EE_10-Jul-2014_120840        softmax tau_H + B + lapse  4 -4041.448 8090.896  0.161             33.372
+equal prior observations, excluding EE_EE_10-Jul-2014_120840       Thompson tau_H + B + lapse  4 -4050.928 8109.855  0.170             52.331
+
+[accuracy: share of free choices of the arm with the higher true mean]
+  lowest: EE_EE_10-Jul-2014_120840_10-Jul-2014_120840.mat: 0.155 (n=1,120); excluded participant above is the lowest: True
+  other 59 participants: 0.549 to 0.893

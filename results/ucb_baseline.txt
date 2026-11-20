@@ -1,0 +1,199 @@
+Optimum-direction baseline. Agents simulated on the participants' own environments, horizons and initial tiles (20 replications per round). Agents learn from unscaled rewards normalized (y-50)/100 as in Wu et al. code; greedy references: Wu specification and prior-variance-1 specification (same as for humans); true rewards on the participant-visible scale.
+
+=== greedy reference = GP of Wu et al. (2018) on unscaled rewards (y-50)/100, prior mean 0, variance 1, noise variance 1e-4 ===
+[summary: among non-greedy choices]
+                                                                p_ng  found_opt_any    n_ng  regret_inc  found_opt   dval  novel  repeat  greedy_is_opt
+dataset agent                                                                                                                                          
+Wu1D    HUMAN                                                  0.897          0.091    8721       0.723      0.067 -0.175  0.989   0.006          0.256
+Wu2D    HUMAN                                                  0.881          0.057   16924       0.862      0.020 -0.240  0.969   0.019          0.302
+Wu1D    GP-UCB, own params (Wu exp. 1 best)                    0.894          0.091  173751       0.737      0.065 -0.183  0.977   0.006          0.248
+        GP*-UCB localized, own params                          0.888          0.070  172681       0.765      0.042 -0.220  0.917   0.025          0.176
+        GP-UCB, own params pooled over horizons                0.884          0.101  171891       0.730      0.068 -0.177  0.979   0.006          0.246
+        GP-UCB, median params (0.554, 0.506, 0.015)            0.987          0.073  191881       0.749      0.066 -0.196  0.999   0.000          0.277
+        random                                                 0.967          0.033  187904       0.810      0.029 -0.284  0.882   0.025          0.160
+        random unsampled                                       0.995          0.033  193457       0.802      0.032 -0.285  1.000   0.000          0.172
+Wu2D    GP*-UCB localized, own params (Wu exp. 2 best)         0.913          0.047  350574       0.876      0.015 -0.265  0.923   0.016          0.200
+        GP*-UCB localized, own params pooled over horizons     0.914          0.048  350820       0.875      0.015 -0.262  0.923   0.016          0.211
+        GP-UCB, own params                                     0.883          0.066  339043       0.868      0.022 -0.242  0.943   0.009          0.292
+        GP*-UCB localized, median params (0.766, 0.488, 0.087) 0.979          0.025  375749       0.881      0.015 -0.274  0.949   0.008          0.226
+        random                                                 0.991          0.008  380708       0.910      0.007 -0.344  0.878   0.007          0.129
+        random unsampled                                       1.000          0.008  383867       0.908      0.008 -0.347  1.000   0.000          0.142
+
+[by remaining horizon, among non-greedy choices]
+                                                                           n  regret_inc  found_opt
+dataset agent                                                  Abin                                
+Wu1D    HUMAN                                                  A>=4     5385       0.677      0.067
+                                                               A=2-3    2257       0.782      0.068
+                                                               A=1      1079       0.831      0.062
+Wu2D    HUMAN                                                  A>=4    15334       0.852      0.020
+                                                               A=2-3    1065       0.951      0.022
+                                                               A=1       525       0.956      0.010
+Wu1D    GP-UCB, own params (Wu exp. 1 best)                    A>=4   106559       0.698      0.065
+                                                               A=2-3   45201       0.784      0.068
+                                                               A=1     21991       0.831      0.062
+        GP*-UCB localized, own params                          A>=4   105403       0.728      0.042
+                                                               A=1     22204       0.848      0.039
+                                                               A=2-3   45074       0.810      0.044
+        GP-UCB, own params pooled over horizons                A>=4   105345       0.690      0.067
+                                                               A=2-3   44793       0.779      0.070
+                                                               A=1     21753       0.823      0.069
+        GP-UCB, median params (0.554, 0.506, 0.015)            A>=4   115251       0.709      0.067
+                                                               A=2-3   51131       0.795      0.067
+                                                               A=1     25499       0.838      0.064
+        random                                                 A>=4   112730       0.773      0.030
+                                                               A=2-3   50073       0.854      0.028
+                                                               A=1     25101       0.887      0.026
+        random unsampled                                       A>=4   115848       0.766      0.033
+                                                               A=2-3   51717       0.847      0.032
+                                                               A=1     25892       0.877      0.031
+Wu2D    GP*-UCB localized, own params (Wu exp. 2 best)         A>=4   316533       0.869      0.015
+                                                               A=2-3   22718       0.945      0.015
+                                                               A=1     11323       0.949      0.016
+        GP*-UCB localized, own params pooled over horizons     A>=4   316622       0.867      0.015
+                                                               A=2-3   22798       0.944      0.014
+                                                               A=1     11400       0.949      0.013
+        GP-UCB, own params                                     A>=4   307038       0.860      0.022
+                                                               A=2-3   21340       0.942      0.022
+                                                               A=1     10665       0.948      0.020
+        GP*-UCB localized, median params (0.766, 0.488, 0.087) A>=4   338434       0.873      0.015
+                                                               A=2-3   24882       0.948      0.015
+                                                               A=1     12433       0.949      0.014
+        random                                                 A>=4   342654       0.904      0.007
+                                                               A=2-3   25359       0.964      0.007
+                                                               A=1     12695       0.967      0.007
+        random unsampled                                       A>=4   345467       0.901      0.008
+                                                               A=2-3   25600       0.962      0.008
+                                                               A=1     12800       0.964      0.008
+
+=== greedy reference = prior-variance-1 specification (prior mean 25 on the participant-visible scale, prior variance 1, noise SD 5) ===
+[summary: among non-greedy choices]
+                                                                p_ng  found_opt_any    n_ng  regret_inc  found_opt   dval  novel  repeat  greedy_is_opt
+dataset agent                                                                                                                                          
+Wu1D    HUMAN                                                  0.899          0.091    8739       0.706      0.068 -0.164  0.991   0.004          0.222
+Wu2D    HUMAN                                                  0.887          0.057   17023       0.807      0.023 -0.202  0.965   0.018          0.148
+Wu1D    GP-UCB, own params (Wu exp. 1 best)                    0.904          0.091  175815       0.709      0.070 -0.166  0.971   0.010          0.210
+        GP*-UCB localized, own params                          0.895          0.070  174032       0.731      0.048 -0.196  0.913   0.027          0.135
+        GP-UCB, own params pooled over horizons                0.895          0.101  174013       0.703      0.073 -0.161  0.972   0.011          0.210
+        GP-UCB, median params (0.554, 0.506, 0.015)            0.992          0.073  192783       0.733      0.067 -0.184  0.999   0.000          0.242
+        random                                                 0.966          0.033  187871       0.786      0.030 -0.262  0.885   0.023          0.134
+        random unsampled                                       0.999          0.033  194116       0.792      0.033 -0.274  1.000   0.000          0.159
+Wu2D    GP*-UCB localized, own params (Wu exp. 2 best)         0.925          0.047  355125       0.807      0.023 -0.220  0.912   0.023          0.105
+        GP*-UCB localized, own params pooled over horizons     0.926          0.048  355524       0.805      0.024 -0.218  0.911   0.022          0.115
+        GP-UCB, own params                                     0.898          0.066  345016       0.807      0.031 -0.208  0.927   0.018          0.163
+        GP*-UCB localized, median params (0.766, 0.488, 0.087) 0.983          0.025  377561       0.821      0.019 -0.231  0.945   0.009          0.119
+        random                                                 0.992          0.008  380814       0.866      0.008 -0.293  0.879   0.007          0.076
+        random unsampled                                       1.000          0.008  383966       0.885      0.008 -0.317  1.000   0.000          0.094
+
+[by remaining horizon, among non-greedy choices]
+                                                                           n  regret_inc  found_opt
+dataset agent                                                  Abin                                
+Wu1D    HUMAN                                                  A>=4     5405       0.658      0.068
+                                                               A=2-3    2260       0.769      0.069
+                                                               A=1      1074       0.818      0.065
+Wu2D    HUMAN                                                  A>=4    15434       0.797      0.023
+                                                               A=2-3    1064       0.899      0.026
+                                                               A=1       525       0.910      0.011
+Wu1D    GP-UCB, own params (Wu exp. 1 best)                    A>=4   107666       0.672      0.067
+                                                               A=2-3   45831       0.754      0.075
+                                                               A=1     22318       0.800      0.072
+        GP*-UCB localized, own params                          A>=4   105987       0.699      0.046
+                                                               A=1     22498       0.798      0.052
+                                                               A=2-3   45547       0.771      0.052
+        GP-UCB, own params pooled over horizons                A>=4   106499       0.663      0.070
+                                                               A=2-3   45372       0.752      0.078
+                                                               A=1     22142       0.793      0.080
+        GP-UCB, median params (0.554, 0.506, 0.015)            A>=4   115936       0.691      0.067
+                                                               A=2-3   51312       0.781      0.068
+                                                               A=1     25535       0.827      0.065
+        random                                                 A>=4   112744       0.753      0.030
+                                                               A=2-3   50067       0.828      0.030
+                                                               A=1     25060       0.855      0.027
+        random unsampled                                       A>=4   116368       0.752      0.033
+                                                               A=2-3   51829       0.841      0.032
+                                                               A=1     25919       0.873      0.031
+Wu2D    GP*-UCB localized, own params (Wu exp. 2 best)         A>=4   320454       0.801      0.023
+                                                               A=2-3   23114       0.860      0.028
+                                                               A=1     11557       0.861      0.032
+        GP*-UCB localized, own params pooled over horizons     A>=4   320743       0.799      0.024
+                                                               A=2-3   23212       0.861      0.029
+                                                               A=1     11569       0.864      0.027
+        GP-UCB, own params                                     A>=4   312198       0.801      0.031
+                                                               A=2-3   21911       0.864      0.039
+                                                               A=1     10907       0.873      0.036
+        GP*-UCB localized, median params (0.766, 0.488, 0.087) A>=4   339980       0.814      0.019
+                                                               A=2-3   25053       0.879      0.023
+                                                               A=1     12528       0.880      0.022
+        random                                                 A>=4   342716       0.862      0.008
+                                                               A=2-3   25398       0.901      0.008
+                                                               A=1     12700       0.899      0.008
+        random unsampled                                       A>=4   345568       0.880      0.008
+                                                               A=2-3   25598       0.929      0.008
+                                                               A=1     12800       0.932      0.008
+
+=== horizon logits, greedy reference = GP of Wu et al. (2018) ===
+
+[horizon dependence: logit(y ~ log A), subject-clustered; regret_inc and found_opt among non-greedy choices]
+  Wu1D HUMAN                                                      non_greedy +0.565 (z=+7.4)  regret_inc -0.507 (z=-11.1)  found_opt +0.007 (z=+0.1)
+  Wu2D HUMAN                                                      non_greedy +0.327 (z=+8.0)  regret_inc -0.677 (z=-16.3)  found_opt +0.120 (z=+1.7)
+  Wu1D GP-UCB, own params (Wu exp. 1 best)                        non_greedy +0.397 (z=+9.3)  regret_inc -0.446 (z=-23.4)  found_opt -0.006 (z=-0.2)
+  Wu1D GP*-UCB localized, own params                              non_greedy +0.297 (z=+13.0)  regret_inc -0.456 (z=-23.3)  found_opt +0.016 (z=+0.7)
+  Wu1D GP-UCB, own params pooled over horizons                    non_greedy +0.365 (z=+9.6)  regret_inc -0.452 (z=-24.7)  found_opt -0.019 (z=-0.7)
+  Wu1D GP-UCB, median params (0.554, 0.506, 0.015)                non_greedy +0.176 (z=+5.6)  regret_inc -0.470 (z=-31.6)  found_opt +0.026 (z=+1.1)
+  Wu1D random                                                     non_greedy -0.019 (z=-1.0)  regret_inc -0.528 (z=-31.7)  found_opt +0.077 (z=+4.2)
+  Wu1D random unsampled                                           non_greedy -0.925 (z=-12.2)  regret_inc -0.501 (z=-30.9)  found_opt +0.025 (z=+1.4)
+  Wu2D GP*-UCB localized, own params (Wu exp. 2 best)             non_greedy +0.205 (z=+7.6)  regret_inc -0.607 (z=-36.4)  found_opt -0.046 (z=-2.3)
+  Wu2D GP*-UCB localized, own params pooled over horizons         non_greedy +0.194 (z=+7.2)  regret_inc -0.618 (z=-39.7)  found_opt +0.025 (z=+1.3)
+  Wu2D GP-UCB, own params                                         non_greedy +0.289 (z=+7.9)  regret_inc -0.602 (z=-35.3)  found_opt -0.011 (z=-0.5)
+  Wu2D GP*-UCB localized, median params (0.766, 0.488, 0.087)     non_greedy +0.163 (z=+12.0)  regret_inc -0.609 (z=-37.4)  found_opt -0.024 (z=-1.2)
+  Wu2D random                                                     non_greedy -0.013 (z=-0.7)  regret_inc -0.709 (z=-38.9)  found_opt +0.028 (z=+1.6)
+  Wu2D random unsampled                                           non_greedy -1.793 (z=-6.9)  regret_inc -0.676 (z=-42.3)  found_opt -0.022 (z=-1.1)
+
+[logit(non_greedy ~ log A + standardized gap), subject-clustered (Appendix I)]
+  Wu1D HUMAN                                                      log A +0.510 (z=+7.6)  gap -0.043 (z=-2.6)
+  Wu2D HUMAN                                                      log A +0.288 (z=+6.9)  gap -0.111 (z=-4.5)
+  Wu1D GP-UCB, own params (Wu exp. 1 best)                        log A +0.329 (z=+8.3)  gap -0.048 (z=-3.9)
+  Wu1D GP*-UCB localized, own params                              log A +0.215 (z=+10.3)  gap -0.045 (z=-4.0)
+  Wu1D GP-UCB, own params pooled over horizons                    log A +0.290 (z=+8.5)  gap -0.052 (z=-4.0)
+  Wu1D GP-UCB, median params (0.554, 0.506, 0.015)                log A +0.211 (z=+7.1)  gap +0.030 (z=+4.0)
+  Wu1D random                                                     log A -0.018 (z=-1.0)  gap +0.000 (z=+0.2)
+  Wu1D random unsampled                                           log A +0.096 (z=+nan)  gap +778.655 (z=+nan)
+  Wu2D GP*-UCB localized, own params (Wu exp. 2 best)             log A +0.124 (z=+5.2)  gap -0.120 (z=-6.9)
+  Wu2D GP*-UCB localized, own params pooled over horizons         log A +0.115 (z=+4.6)  gap -0.120 (z=-5.4)
+  Wu2D GP-UCB, own params                                         log A +0.218 (z=+5.5)  gap -0.143 (z=-11.3)
+  Wu2D GP*-UCB localized, median params (0.766, 0.488, 0.087)     log A +0.123 (z=+9.4)  gap -0.085 (z=-23.0)
+  Wu2D random                                                     log A -0.010 (z=-0.5)  gap +0.005 (z=+1.2)
+  Wu2D random unsampled                                           log A -0.045 (z=+nan)  gap +134.944 (z=+nan)
+
+=== horizon logits, greedy reference = prior-variance-1 specification (prior mean 25 on the participant-visible scale, prior variance 1, noise SD 5) ===
+
+[horizon dependence: logit(y ~ log A), subject-clustered; regret_inc and found_opt among non-greedy choices]
+  Wu1D HUMAN                                                      non_greedy +0.597 (z=+7.7)  regret_inc -0.496 (z=-10.6)  found_opt -0.008 (z=-0.1)
+  Wu2D HUMAN                                                      non_greedy +0.357 (z=+9.4)  regret_inc -0.444 (z=-11.6)  found_opt +0.065 (z=+1.1)
+  Wu1D GP-UCB, own params (Wu exp. 1 best)                        non_greedy +0.410 (z=+8.8)  regret_inc -0.396 (z=-16.7)  found_opt -0.066 (z=-2.3)
+  Wu1D GP*-UCB localized, own params                              non_greedy +0.272 (z=+11.6)  regret_inc -0.341 (z=-16.9)  found_opt -0.093 (z=-3.8)
+  Wu1D GP-UCB, own params pooled over horizons                    non_greedy +0.368 (z=+9.0)  regret_inc -0.411 (z=-17.6)  found_opt -0.081 (z=-2.7)
+  Wu1D GP-UCB, median params (0.554, 0.506, 0.015)                non_greedy +0.538 (z=+16.0)  regret_inc -0.470 (z=-29.9)  found_opt +0.018 (z=+0.7)
+  Wu1D random                                                     non_greedy +0.008 (z=+0.5)  regret_inc -0.431 (z=-26.3)  found_opt +0.055 (z=+3.1)
+  Wu1D random unsampled                                           non_greedy -1.525 (z=-9.9)  regret_inc -0.523 (z=-30.7)  found_opt +0.025 (z=+1.4)
+  Wu2D GP*-UCB localized, own params (Wu exp. 2 best)             non_greedy +0.199 (z=+6.4)  regret_inc -0.279 (z=-20.1)  found_opt -0.188 (z=-10.5)
+  Wu2D GP*-UCB localized, own params pooled over horizons         non_greedy +0.192 (z=+6.0)  regret_inc -0.298 (z=-21.7)  found_opt -0.134 (z=-6.0)
+  Wu2D GP-UCB, own params                                         non_greedy +0.290 (z=+7.4)  regret_inc -0.290 (z=-17.5)  found_opt -0.154 (z=-6.5)
+  Wu2D GP*-UCB localized, median params (0.766, 0.488, 0.087)     non_greedy +0.158 (z=+10.9)  regret_inc -0.332 (z=-28.5)  found_opt -0.127 (z=-7.4)
+  Wu2D random                                                     non_greedy -0.031 (z=-1.4)  regret_inc -0.277 (z=-23.8)  found_opt -0.014 (z=-0.8)
+  Wu2D random unsampled                                           non_greedy -1.164 (z=-3.0)  regret_inc -0.427 (z=-31.1)  found_opt -0.021 (z=-1.1)
+
+[logit(non_greedy ~ log A + standardized gap), subject-clustered (Appendix I)]
+  Wu1D HUMAN                                                      log A +0.420 (z=+3.9)  gap -2.456 (z=-14.0)
+  Wu2D HUMAN                                                      log A -0.092 (z=-1.1)  gap -1.692 (z=-8.8)
+  Wu1D GP-UCB, own params (Wu exp. 1 best)                        log A +0.148 (z=+2.0)  gap -1.401 (z=-12.6)
+  Wu1D GP*-UCB localized, own params                              log A +0.024 (z=+0.5)  gap -1.032 (z=-11.9)
+  Wu1D GP-UCB, own params pooled over horizons                    log A +0.065 (z=+1.0)  gap -1.413 (z=-13.1)
+  Wu1D GP-UCB, median params (0.554, 0.506, 0.015)                log A +0.521 (z=+14.6)  gap +0.389 (z=+2.4)
+  Wu1D random                                                     log A +0.009 (z=+0.5)  gap +0.018 (z=+0.7)
+  Wu1D random unsampled                                           log A +0.009 (z=+nan)  gap +1363.264 (z=+nan)
+  Wu2D GP*-UCB localized, own params (Wu exp. 2 best)             log A -0.140 (z=-2.5)  gap -0.709 (z=-15.0)
+  Wu2D GP*-UCB localized, own params pooled over horizons         log A -0.149 (z=-2.5)  gap -0.726 (z=-13.1)
+  Wu2D GP-UCB, own params                                         log A -0.052 (z=-0.8)  gap -0.718 (z=-14.1)
+  Wu2D GP*-UCB localized, median params (0.766, 0.488, 0.087)     log A +0.061 (z=+4.4)  gap -0.633 (z=-39.7)
+  Wu2D random                                                     log A -0.030 (z=-1.3)  gap +0.063 (z=+1.1)
+  Wu2D random unsampled                                           log A -0.853 (z=+nan)  gap +156.511 (z=+nan)

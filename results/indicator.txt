@@ -1,0 +1,329 @@
+Decomposition of the non-greedy indicator
+
+[Wu1D, wu] composition (n=9,720)
+  A >= 2 (n=8,424): P(non-greedy) = 0.907; mean V_q = 0.8381; mean V_q / noise variance = 8381
+  P(non-greedy) = 0.897; tie-aware = 0.798; tied top = 0.137
+  among non-greedy (n=8,721): repeat prev = 0.006, revisit = 0.005, novel = 0.989
+  among greedy     (n=999): repeat prev = 0.804, revisit = 0.146, novel = 0.050
+  greedy cell already sampled = 0.865; greedy cell = previous choice = 0.372
+  P(repeat previous) all trials = 0.088; P(chosen never sampled) = 0.893
+  non-greedy & chosen = global optimum x*_g: 0.067; greedy & greedy = x*_g: 0.307
+
+[Wu1D, wu] horizon signature: logit(outcome ~ log A + gap), all trials, subject-clustered
+  non_greedy      rate=0.897  logA=+0.510 (z=+7.6)  gap=-0.043 (z=-2.6)
+  ng_repeat       rate=0.005  logA=-0.808 (z=-4.8)  gap=-0.061 (z=-1.5)
+  ng_revisit      rate=0.005  logA=-0.964 (z=-6.3)  gap=-0.039 (z=-1.2)
+  ng_novel        rate=0.887  logA=+0.558 (z=+8.7)  gap=-0.037 (z=-2.3)
+  ng_switch       rate=0.892  logA=+0.531 (z=+8.1)  gap=-0.039 (z=-2.4)
+  is_prev         rate=0.088  logA=-0.582 (z=-8.2)  gap=+0.044 (z=+2.5)
+  persist_subopt  rate=0.063  logA=-0.505 (z=-7.0)  gap=+0.012 (z=+0.5)
+  conditional on non-greedy:
+    P(repeat | ng)  rate=0.006  logA=-0.860 (z=-5.0)
+    P(novel | ng)   rate=0.989  logA=+0.939 (z=+7.1)
+
+[Wu1D, wu] rates by A bin
+            n    ng  ng_repeat  ng_revisit  ng_novel  is_prev  persist_subopt
+Ab                                                                           
+(0, 1]   1296 0.833      0.011       0.012     0.810    0.150           0.100
+(1, 2]   1296 0.859      0.007       0.008     0.844    0.126           0.083
+(2, 4]   2592 0.889      0.005       0.003     0.880    0.098           0.071
+(4, 8]   3240 0.918      0.003       0.003     0.911    0.064           0.048
+(8, 16]  1296 0.966      0.002       0.000     0.965    0.025           0.025
+
+[Wu1D, wu] condition (b) given (a): n non-greedy = 8,721
+  Def. 1(b) mu_t(x*_g) <= mu_t(x_t): all = 0.492; excluding x_t = x*_g = 0.456 (n=8,139)
+  share with delta_(t-1) = mu(x_t) - mu(x*_g) > 0 (Proposition 5 regime): 0.482
+    (b) | delta > 0 = 0.709 (n=3,922);  (b) | delta <= 0 = 0.221 (n=4,217)
+  Proposition 5 prediction Phi(kappa_b): mean predicted = 0.452, observed = 0.456 (n=8,139; G<=0 excluded: 0)
+  calibration by decile of predicted P(b):
+    pred: 0.29 0.32 0.36 0.50 0.50 0.50 0.50 0.51 0.51 0.54
+    obs : 0.00 0.00 0.08 0.41 0.53 0.45 0.52 0.67 0.87 0.96
+  by category (excluding x*_g): novel=0.457 (n=8,048), repeat=0.360 (n=50), revisit=0.463 (n=41)
+  variants (all non-greedy): x_t overtakes old greedy mu_t(x_t) >= mu_t(x*_t) = 0.272; x_t becomes posterior top = 0.272; mu_t(x*_g) <= mu_t(x*_t) = 0.892
+
+[Wu1D, wu] what follows a choice (A >= 2, next choice observed)
+  after greedy (n=782): repeat same = 0.873
+  after non-greedy (n=7,642): repeat same = 0.019, return to old greedy = 0.027, other = 0.955
+    x_t != x*_g, (b) = 0: n=3,755, repeat same = 0.008, return to old greedy = 0.032
+    x_t != x*_g, (b) = 1: n=3,372, repeat same = 0.024, return to old greedy = 0.022
+    x_t != x*_g, x_t is posterior top after r_t = 0: n=5,414, repeat same = 0.009
+    x_t != x*_g, x_t is posterior top after r_t = 1: n=1,713, repeat same = 0.038
+
+[Wu2D, wu] composition (n=19,200)
+  A >= 2 (n=18,560): P(non-greedy) = 0.884; mean V_q = 0.8196; mean V_q / noise variance = 8196
+  P(non-greedy) = 0.881; tie-aware = 0.866; tied top = 0.041
+  among non-greedy (n=16,924): repeat prev = 0.019, revisit = 0.013, novel = 0.969
+  among greedy     (n=2,276): repeat prev = 0.891, revisit = 0.086, novel = 0.023
+  greedy cell already sampled = 0.951; greedy cell = previous choice = 0.240
+  P(repeat previous) all trials = 0.122; P(chosen never sampled) = 0.857
+  non-greedy & chosen = global optimum x*_g: 0.020; greedy & greedy = x*_g: 0.329
+
+[Wu2D, wu] horizon signature: logit(outcome ~ log A + gap), all trials, subject-clustered
+  non_greedy      rate=0.881  logA=+0.288 (z=+6.9)  gap=-0.111 (z=-4.5)
+  ng_repeat       rate=0.017  logA=-0.311 (z=-3.2)  gap=-0.054 (z=-1.7)
+  ng_revisit      rate=0.011  logA=-0.400 (z=-5.7)  gap=-0.033 (z=-0.8)
+  ng_novel        rate=0.854  logA=+0.318 (z=+8.7)  gap=-0.090 (z=-3.9)
+  ng_switch       rate=0.865  logA=+0.300 (z=+7.8)  gap=-0.097 (z=-4.2)
+  is_prev         rate=0.122  logA=-0.332 (z=-8.5)  gap=+0.110 (z=+4.6)
+  persist_subopt  rate=0.087  logA=-0.309 (z=-7.5)  gap=+0.022 (z=+0.8)
+  conditional on non-greedy:
+    P(repeat | ng)  rate=0.019  logA=-0.342 (z=-3.5)
+    P(novel | ng)   rate=0.969  logA=+0.386 (z=+5.1)
+
+[Wu2D, wu] rates by A bin
+             n    ng  ng_repeat  ng_revisit  ng_novel  is_prev  persist_subopt
+Ab                                                                            
+(0, 1]     640 0.820      0.030       0.028     0.762    0.195           0.133
+(1, 2]     640 0.831      0.027       0.020     0.784    0.184           0.123
+(2, 4]    1280 0.834      0.024       0.018     0.791    0.180           0.127
+(4, 8]    2560 0.838      0.024       0.011     0.803    0.173           0.121
+(8, 16]   5120 0.877      0.014       0.011     0.852    0.125           0.086
+(16, 40]  8960 0.911      0.013       0.008     0.890    0.088           0.065
+
+[Wu2D, wu] condition (b) given (a): n non-greedy = 16,924
+  Def. 1(b) mu_t(x*_g) <= mu_t(x_t): all = 0.454; excluding x_t = x*_g = 0.443 (n=16,582)
+  share with delta_(t-1) = mu(x_t) - mu(x*_g) > 0 (Proposition 5 regime): 0.477
+    (b) | delta > 0 = 0.791 (n=7,916);  (b) | delta <= 0 = 0.124 (n=8,666)
+  Proposition 5 prediction Phi(kappa_b): mean predicted = 0.457, observed = 0.443 (n=16,582; G<=0 excluded: 0)
+  calibration by decile of predicted P(b):
+    pred: 0.23 0.31 0.35 0.43 0.49 0.50 0.51 0.54 0.56 0.65
+    obs : 0.00 0.00 0.00 0.14 0.39 0.50 0.63 0.82 0.95 0.99
+  by category (excluding x*_g): novel=0.443 (n=16,057), repeat=0.431 (n=318), revisit=0.440 (n=207)
+  variants (all non-greedy): x_t overtakes old greedy mu_t(x_t) >= mu_t(x*_t) = 0.130; x_t becomes posterior top = 0.129; mu_t(x*_g) <= mu_t(x*_t) = 0.965
+
+[Wu2D, wu] what follows a choice (A >= 2, next choice observed)
+  after greedy (n=2,161): repeat same = 0.899
+  after non-greedy (n=16,399): repeat same = 0.023, return to old greedy = 0.014, other = 0.962
+    x_t != x*_g, (b) = 0: n=8,866, repeat same = 0.020, return to old greedy = 0.012
+    x_t != x*_g, (b) = 1: n=7,196, repeat same = 0.027, return to old greedy = 0.017
+    x_t != x*_g, x_t is posterior top after r_t = 0: n=14,218, repeat same = 0.022
+    x_t != x*_g, x_t is posterior top after r_t = 1: n=1,844, repeat same = 0.032
+
+[Wu1D, priorvar1] composition (n=9,720)
+  A >= 2 (n=8,424): P(non-greedy) = 0.910; mean V_q = 1.213; mean V_q / noise variance = 0.04853
+  P(non-greedy) = 0.899; tie-aware = 0.858; tied top = 0.053
+  among non-greedy (n=8,739): repeat prev = 0.004, revisit = 0.005, novel = 0.991
+  among greedy     (n=981): repeat prev = 0.831, revisit = 0.154, novel = 0.015
+  greedy cell already sampled = 0.954; greedy cell = previous choice = 0.402
+  P(repeat previous) all trials = 0.088; P(chosen never sampled) = 0.893
+  non-greedy & chosen = global optimum x*_g: 0.068; greedy & greedy = x*_g: 0.304
+
+[Wu1D, priorvar1] horizon signature: logit(outcome ~ log A + gap), all trials, subject-clustered
+  non_greedy      rate=0.899  logA=+0.420 (z=+3.9)  gap=-2.456 (z=-14.0)
+  ng_repeat       rate=0.004  logA=-0.553 (z=-2.8)  gap=+0.029 (z=+0.2)
+  ng_revisit      rate=0.004  logA=-0.718 (z=-3.1)  gap=+0.029 (z=+0.3)
+  ng_novel        rate=0.891  logA=+0.507 (z=+5.5)  gap=-2.420 (z=-15.5)
+  ng_switch       rate=0.895  logA=+0.457 (z=+4.8)  gap=-2.432 (z=-15.4)
+  is_prev         rate=0.088  logA=-0.416 (z=-3.5)  gap=+2.952 (z=+14.7)
+  persist_subopt  rate=0.063  logA=-0.045 (z=-0.3)  gap=+1.131 (z=+6.5)
+  conditional on non-greedy:
+    P(repeat | ng)  rate=0.004  logA=-0.654 (z=-3.3)
+    P(novel | ng)   rate=0.991  logA=+0.752 (z=+4.9)
+
+[Wu1D, priorvar1] rates by A bin
+            n    ng  ng_repeat  ng_revisit  ng_novel  is_prev  persist_subopt
+Ab                                                                           
+(0, 1]   1296 0.829      0.006       0.008     0.814    0.150           0.100
+(1, 2]   1296 0.860      0.005       0.007     0.847    0.126           0.083
+(2, 4]   2592 0.892      0.004       0.003     0.885    0.098           0.071
+(4, 8]   3240 0.922      0.004       0.004     0.915    0.064           0.048
+(8, 16]  1296 0.965      0.000       0.000     0.965    0.025           0.025
+
+[Wu1D, priorvar1] condition (b) given (a): n non-greedy = 8,739
+  Def. 1(b) mu_t(x*_g) <= mu_t(x_t): all = 0.643; excluding x_t = x*_g = 0.617 (n=8,148)
+  share with delta_(t-1) = mu(x_t) - mu(x*_g) > 0 (Proposition 5 regime): 0.447
+    (b) | delta > 0 = 0.919 (n=3,644);  (b) | delta <= 0 = 0.372 (n=4,504)
+  Proposition 5 prediction Phi(kappa_b): mean predicted = 0.451, observed = 0.617 (n=8,148; G<=0 excluded: 0)
+  calibration by decile of predicted P(b):
+    pred: 0.00 0.00 0.04 0.49 0.50 0.56 0.73 0.81 0.90
+    obs : 0.00 0.01 0.18 0.74 0.74 0.82 0.97 0.99 0.99
+  by category (excluding x*_g): novel=0.615 (n=8,078), repeat=0.824 (n=34), revisit=0.778 (n=36)
+  variants (all non-greedy): x_t overtakes old greedy mu_t(x_t) >= mu_t(x*_t) = 0.273; x_t becomes posterior top = 0.264; mu_t(x*_g) <= mu_t(x*_t) = 0.926
+
+[Wu1D, priorvar1] what follows a choice (A >= 2, next choice observed)
+  after greedy (n=759): repeat same = 0.908
+  after non-greedy (n=7,665): repeat same = 0.018, return to old greedy = 0.020, other = 0.962
+    x_t != x*_g, (b) = 0: n=2,563, repeat same = 0.005, return to old greedy = 0.025
+    x_t != x*_g, (b) = 1: n=4,581, repeat same = 0.019, return to old greedy = 0.019
+    x_t != x*_g, x_t is posterior top after r_t = 0: n=5,353, repeat same = 0.006
+    x_t != x*_g, x_t is posterior top after r_t = 1: n=1,791, repeat same = 0.039
+
+[Wu2D, priorvar1] composition (n=19,200)
+  A >= 2 (n=18,560): P(non-greedy) = 0.889; mean V_q = 2.037; mean V_q / noise variance = 0.08149
+  P(non-greedy) = 0.887; tie-aware = 0.881; tied top = 0.013
+  among non-greedy (n=17,023): repeat prev = 0.018, revisit = 0.017, novel = 0.965
+  among greedy     (n=2,177): repeat prev = 0.934, revisit = 0.057, novel = 0.009
+  greedy cell already sampled = 0.988; greedy cell = previous choice = 0.205
+  P(repeat previous) all trials = 0.122; P(chosen never sampled) = 0.857
+  non-greedy & chosen = global optimum x*_g: 0.023; greedy & greedy = x*_g: 0.319
+
+[Wu2D, priorvar1] horizon signature: logit(outcome ~ log A + gap), all trials, subject-clustered
+  non_greedy      rate=0.887  logA=-0.092 (z=-1.1)  gap=-1.692 (z=-8.8)
+  ng_repeat       rate=0.016  logA=-0.191 (z=-3.0)  gap=-0.029 (z=-0.7)
+  ng_revisit      rate=0.015  logA=-0.389 (z=-7.1)  gap=-0.112 (z=-3.0)
+  ng_novel        rate=0.856  logA=+0.131 (z=+2.4)  gap=-1.689 (z=-9.7)
+  ng_switch       rate=0.870  logA=+0.011 (z=+0.2)  gap=-1.724 (z=-9.8)
+  is_prev         rate=0.122  logA=-0.040 (z=-0.6)  gap=+1.712 (z=+9.5)
+  persist_subopt  rate=0.087  logA=-0.016 (z=-0.2)  gap=+0.383 (z=+4.7)
+  conditional on non-greedy:
+    P(repeat | ng)  rate=0.018  logA=-0.197 (z=-2.9)
+    P(novel | ng)   rate=0.965  logA=+0.302 (z=+5.6)
+
+[Wu2D, priorvar1] rates by A bin
+             n    ng  ng_repeat  ng_revisit  ng_novel  is_prev  persist_subopt
+Ab                                                                            
+(0, 1]     640 0.820      0.025       0.033     0.762    0.195           0.133
+(1, 2]     640 0.828      0.020       0.023     0.784    0.184           0.123
+(2, 4]    1280 0.833      0.018       0.023     0.791    0.180           0.127
+(4, 8]    2560 0.846      0.025       0.018     0.804    0.173           0.121
+(8, 16]   5120 0.880      0.013       0.014     0.853    0.125           0.086
+(16, 40]  8960 0.918      0.014       0.011     0.893    0.088           0.065
+
+[Wu2D, priorvar1] condition (b) given (a): n non-greedy = 17,023
+  Def. 1(b) mu_t(x*_g) <= mu_t(x_t): all = 0.633; excluding x_t = x*_g = 0.624 (n=16,628)
+  share with delta_(t-1) = mu(x_t) - mu(x*_g) > 0 (Proposition 5 regime): 0.540
+    (b) | delta > 0 = 0.966 (n=8,977);  (b) | delta <= 0 = 0.222 (n=7,651)
+  Proposition 5 prediction Phi(kappa_b): mean predicted = 0.542, observed = 0.624 (n=16,628; G<=0 excluded: 0)
+  calibration by decile of predicted P(b):
+    pred: 0.00 0.00 0.00 0.15 0.50 0.78 0.99 1.00 1.00 1.00
+    obs : 0.00 0.00 0.00 0.54 0.79 0.91 1.00 1.00 1.00 1.00
+  by category (excluding x*_g): novel=0.621 (n=16,089), repeat=0.679 (n=290), revisit=0.751 (n=249)
+  variants (all non-greedy): x_t overtakes old greedy mu_t(x_t) >= mu_t(x*_t) = 0.091; x_t becomes posterior top = 0.081; mu_t(x*_g) <= mu_t(x*_t) = 0.977
+
+[Wu2D, priorvar1] what follows a choice (A >= 2, next choice observed)
+  after greedy (n=2,062): repeat same = 0.931
+  after non-greedy (n=16,498): repeat same = 0.025, return to old greedy = 0.009, other = 0.966
+    x_t != x*_g, (b) = 0: n=5,943, repeat same = 0.017, return to old greedy = 0.007
+    x_t != x*_g, (b) = 1: n=10,166, repeat same = 0.026, return to old greedy = 0.010
+    x_t != x*_g, x_t is posterior top after r_t = 0: n=14,856, repeat same = 0.019
+    x_t != x*_g, x_t is posterior top after r_t = 1: n=1,253, repeat same = 0.059
+
+[Wu1D, priorvar300] composition (n=9,720)
+  A >= 2 (n=8,424): P(non-greedy) = 0.904; mean V_q = 298.3; mean V_q / noise variance = 298.3
+  P(non-greedy) = 0.896; tie-aware = 0.755; tied top = 0.270
+  among non-greedy (n=8,705): repeat prev = 0.013, revisit = 0.007, novel = 0.980
+  among greedy     (n=1,015): repeat prev = 0.728, revisit = 0.125, novel = 0.147
+  greedy cell already sampled = 0.718; greedy cell = previous choice = 0.302
+  P(repeat previous) all trials = 0.088; P(chosen never sampled) = 0.893
+  non-greedy & chosen = global optimum x*_g: 0.066; greedy & greedy = x*_g: 0.310
+
+[Wu1D, priorvar300] horizon signature: logit(outcome ~ log A + gap), all trials, subject-clustered
+  non_greedy      rate=0.896  logA=+0.415 (z=+6.5)  gap=-0.067 (z=-3.0)
+  ng_repeat       rate=0.012  logA=-0.777 (z=-5.8)  gap=-0.333 (z=-1.8)
+  ng_revisit      rate=0.007  logA=-0.875 (z=-7.4)  gap=-0.093 (z=-1.3)
+  ng_novel        rate=0.877  logA=+0.492 (z=+7.9)  gap=-0.044 (z=-1.8)
+  ng_switch       rate=0.884  logA=+0.459 (z=+7.2)  gap=-0.050 (z=-2.0)
+  is_prev         rate=0.088  logA=-0.578 (z=-8.3)  gap=+0.072 (z=+2.6)
+  persist_subopt  rate=0.063  logA=-0.514 (z=-6.7)  gap=+0.009 (z=+0.2)
+  conditional on non-greedy:
+    P(repeat | ng)  rate=0.013  logA=-0.825 (z=-6.0)
+    P(novel | ng)   rate=0.980  logA=+0.859 (z=+7.4)
+
+[Wu1D, priorvar300] condition (b) given (a): n non-greedy = 8,705
+  Def. 1(b) mu_t(x*_g) <= mu_t(x_t): all = 0.351; excluding x_t = x*_g = 0.305 (n=8,131)
+  share with delta_(t-1) = mu(x_t) - mu(x*_g) > 0 (Proposition 5 regime): 0.332
+    (b) | delta > 0 = 0.591 (n=2,699);  (b) | delta <= 0 = 0.163 (n=5,432)
+  Proposition 5 prediction Phi(kappa_b): mean predicted = 0.386, observed = 0.305 (n=8,131; G<=0 excluded: 0)
+  calibration by decile of predicted P(b):
+    pred: 0.03 0.09 0.18 0.46 0.50 0.50 0.50 0.50 0.53 0.57
+    obs : 0.00 0.01 0.01 0.22 0.29 0.33 0.27 0.38 0.65 0.85
+  by category (excluding x*_g): novel=0.308 (n=7,957), repeat=0.132 (n=114), revisit=0.217 (n=60)
+  variants (all non-greedy): x_t overtakes old greedy mu_t(x_t) >= mu_t(x*_t) = 0.226; x_t becomes posterior top = 0.223; mu_t(x*_g) <= mu_t(x*_t) = 0.878
+
+[Wu1D, priorvar300] what follows a choice (A >= 2, next choice observed)
+  after greedy (n=811): repeat same = 0.778
+  after non-greedy (n=7,613): repeat same = 0.026, return to old greedy = 0.028, other = 0.946
+    x_t != x*_g, (b) = 0: n=4,848, repeat same = 0.020, return to old greedy = 0.031
+    x_t != x*_g, (b) = 1: n=2,256, repeat same = 0.031, return to old greedy = 0.025
+    x_t != x*_g, x_t is posterior top after r_t = 0: n=5,796, repeat same = 0.019
+    x_t != x*_g, x_t is posterior top after r_t = 1: n=1,308, repeat same = 0.043
+
+[Wu2D, priorvar300] composition (n=19,200)
+  A >= 2 (n=18,560): P(non-greedy) = 0.881; mean V_q = 282.8; mean V_q / noise variance = 282.8
+  P(non-greedy) = 0.879; tie-aware = 0.859; tied top = 0.094
+  among non-greedy (n=16,878): repeat prev = 0.023, revisit = 0.014, novel = 0.964
+  among greedy     (n=2,322): repeat prev = 0.846, revisit = 0.077, novel = 0.077
+  greedy cell already sampled = 0.856; greedy cell = previous choice = 0.210
+  P(repeat previous) all trials = 0.122; P(chosen never sampled) = 0.857
+  non-greedy & chosen = global optimum x*_g: 0.020; greedy & greedy = x*_g: 0.324
+
+[Wu2D, priorvar300] horizon signature: logit(outcome ~ log A + gap), all trials, subject-clustered
+  non_greedy      rate=0.879  logA=+0.234 (z=+5.9)  gap=-0.148 (z=-3.3)
+  ng_repeat       rate=0.020  logA=-0.339 (z=-4.0)  gap=-0.211 (z=-2.2)
+  ng_revisit      rate=0.012  logA=-0.365 (z=-5.3)  gap=-0.053 (z=-0.9)
+  ng_novel        rate=0.847  logA=+0.274 (z=+7.6)  gap=-0.105 (z=-2.5)
+  ng_switch       rate=0.859  logA=+0.255 (z=+6.8)  gap=-0.115 (z=-2.7)
+  is_prev         rate=0.122  logA=-0.319 (z=-9.2)  gap=+0.144 (z=+3.2)
+  persist_subopt  rate=0.087  logA=-0.341 (z=-8.8)  gap=-0.058 (z=-1.0)
+  conditional on non-greedy:
+    P(repeat | ng)  rate=0.023  logA=-0.372 (z=-4.2)
+    P(novel | ng)   rate=0.964  logA=+0.386 (z=+5.4)
+
+[Wu2D, priorvar300] condition (b) given (a): n non-greedy = 16,878
+  Def. 1(b) mu_t(x*_g) <= mu_t(x_t): all = 0.303; excluding x_t = x*_g = 0.289 (n=16,540)
+  share with delta_(t-1) = mu(x_t) - mu(x*_g) > 0 (Proposition 5 regime): 0.368
+    (b) | delta > 0 = 0.636 (n=6,089);  (b) | delta <= 0 = 0.086 (n=10,451)
+  Proposition 5 prediction Phi(kappa_b): mean predicted = 0.370, observed = 0.289 (n=16,540; G<=0 excluded: 0)
+  calibration by decile of predicted P(b):
+    pred: 0.01 0.05 0.12 0.23 0.39 0.48 0.50 0.54 0.61 0.76
+    obs : 0.00 0.00 0.00 0.04 0.14 0.27 0.28 0.49 0.74 0.93
+  by category (excluding x*_g): novel=0.288 (n=15,935), repeat=0.247 (n=380), revisit=0.360 (n=225)
+  variants (all non-greedy): x_t overtakes old greedy mu_t(x_t) >= mu_t(x*_t) = 0.108; x_t becomes posterior top = 0.106; mu_t(x*_g) <= mu_t(x*_t) = 0.949
+
+[Wu2D, priorvar300] what follows a choice (A >= 2, next choice observed)
+  after greedy (n=2,209): repeat same = 0.857
+  after non-greedy (n=16,351): repeat same = 0.026, return to old greedy = 0.019, other = 0.955
+    x_t != x*_g, (b) = 0: n=11,339, repeat same = 0.024, return to old greedy = 0.016
+    x_t != x*_g, (b) = 1: n=4,679, repeat same = 0.030, return to old greedy = 0.023
+    x_t != x*_g, x_t is posterior top after r_t = 0: n=14,570, repeat same = 0.025
+    x_t != x*_g, x_t is posterior top after r_t = 1: n=1,448, repeat same = 0.035
+
+[Wilson, all free choices] composition (n=67,200)
+  A >= 2 (n=48,000): P(non-greedy) = 0.190; mean V_q = 102.8; mean V_q / noise variance = 1.606
+  P(non-greedy) = 0.175; tie-aware = 0.173; tied top = 0.004
+  among non-greedy (n=11,750): repeat prev = 0.448, revisit = 0.552, novel = 0.000
+  among greedy     (n=55,450): repeat prev = 0.753, revisit = 0.247, novel = 0.000
+  greedy cell already sampled = 1.000; greedy cell = previous choice = 0.718
+  P(repeat previous) all trials = 0.700; P(chosen never sampled) = 0.000
+  non-greedy & chosen = global optimum x*_g: 0.178; greedy & greedy = x*_g: 0.920
+
+[Wilson, all free choices] condition (b) given (a): n non-greedy = 11,750
+  Def. 1(b) mu_t(x*_g) <= mu_t(x_t): all = 0.212; excluding x_t = x*_g = 0.041 (n=9,662)
+  share with delta_(t-1) = mu(x_t) - mu(x*_g) > 0 (Proposition 5 regime): 0.000
+    (b) | delta > 0 = nan (n=0);  (b) | delta <= 0 = 0.041 (n=9,662)
+  Proposition 5 prediction Phi(kappa_b): mean predicted = 0.064, observed = 0.041 (n=9,662; G<=0 excluded: 0)
+  calibration by decile of predicted P(b):
+    pred: 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.07 0.19 0.38
+    obs : 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.04 0.11 0.25
+  by category (excluding x*_g): repeat=0.045 (n=4,210), revisit=0.038 (n=5,452)
+  variants (all non-greedy): x_t overtakes old greedy mu_t(x_t) >= mu_t(x*_t) = 0.091; x_t becomes posterior top = 0.087; mu_t(x*_g) <= mu_t(x*_t) = 0.947
+
+[Wilson, t=5] condition (b) given (a): n non-greedy = 4,009
+  Def. 1(b) mu_t(x*_g) <= mu_t(x_t): all = 0.222; excluding x_t = x*_g = 0.048 (n=3,277)
+  share with delta_(t-1) = mu(x_t) - mu(x*_g) > 0 (Proposition 5 regime): 0.000
+    (b) | delta > 0 = nan (n=0);  (b) | delta <= 0 = 0.048 (n=3,277)
+  Proposition 5 prediction Phi(kappa_b): mean predicted = 0.073, observed = 0.048 (n=3,277; G<=0 excluded: 0)
+  calibration by decile of predicted P(b):
+    pred: 0.00 0.00 0.00 0.00 0.00 0.00 0.02 0.09 0.22 0.40
+    obs : 0.00 0.00 0.00 0.00 0.00 0.00 0.02 0.06 0.15 0.26
+  by category (excluding x*_g): repeat=0.058 (n=1,305), revisit=0.041 (n=1,972)
+  variants (all non-greedy): x_t overtakes old greedy mu_t(x_t) >= mu_t(x*_t) = 0.102; x_t becomes posterior top = 0.098; mu_t(x*_g) <= mu_t(x*_t) = 0.940
+
+[Wilson t=5] first free choice; previous choice = 4th forced trial (n=19,200)
+  non_greedy : H1=0.154  H6=0.263  diff=+0.109   logit H6=+0.698 (z=+7.7)
+  ng_repeat  : H1=0.070  H6=0.100  diff=+0.030   logit H6=+0.393 (z=+4.3)
+  ng_switch  : H1=0.084  H6=0.164  diff=+0.079   logit H6=+0.764 (z=+6.4)
+  H=1: P(non-greedy arm = 4th forced arm | ng) = 0.453 (n=1,480)
+  H=6: P(non-greedy arm = 4th forced arm | ng) = 0.378 (n=2,529)
+  info=equal: ng_repeat H1=0.056 H6=0.084, ng_switch H1=0.074 H6=0.159
+  info=unequal: ng_repeat H1=0.084 H6=0.115, ng_switch H1=0.094 H6=0.169
+  H6, after non-greedy at t=5: next choice repeats it = 0.324 (n=2,529); x_t != x*_g & (b): 0.047
+  H6, after greedy at t=5: next choice repeats it = 0.804
+
+[Wilson H6, all free choices] what follows a choice (A >= 2, next choice observed)
+  after greedy (n=38,884): repeat same = 0.885
+  after non-greedy (n=9,116): repeat same = 0.421, return to old greedy = 0.579, other = 0.000
+    x_t != x*_g, (b) = 0: n=7,217, repeat same = 0.368, return to old greedy = 0.632
+    x_t != x*_g, (b) = 1: n=315, repeat same = 0.765, return to old greedy = 0.235
+    x_t != x*_g, x_t is posterior top after r_t = 0: n=7,229, repeat same = 0.368
+    x_t != x*_g, x_t is posterior top after r_t = 1: n=303, repeat same = 0.779

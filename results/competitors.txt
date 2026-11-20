@@ -1,0 +1,78 @@
+Comparison with existing mechanistic accounts of horizon-dependent random exploration
+Wilson first free choice. Bayes-optimal finite-horizon Q-values: flat prior (posterior mean = sample mean), rho = 8, two arms, computed by backward induction on (d, n1, n2) with Gauss-Hermite quadrature.
+
+  H=1, equal  : slope of optimal dQ on dR = 1.000; mean dQ - dR at dR = 0 by dI: dI=+0: +0.00
+  H=1, unequal: slope of optimal dQ on dR = 1.000; mean dQ - dR at dR = 0 by dI: dI=-1: +0.00, dI=+1: +0.00
+  H=6, equal  : slope of optimal dQ on dR = 0.998; mean dQ - dR at dR = 0 by dI: dI=+0: -0.01
+  H=6, unequal: slope of optimal dQ on dR = 0.996; mean dQ - dR at dR = 0 by dI: dI=-1: -0.55, dI=+1: +0.65
+
+[games with equal prior observations, n=9,600; observed P(ng) H1 = 0.130, H6 = 0.242]
+                                                                  model  k        LL      AIC    dAIC      BIC    dBIC     cv_LL  pred_H1  pred_H6
+                                         FP q=U_D + B + lapse (rho = 8)  3 -4320.622 8647.243  23.255 8668.752  16.086 -4341.308    0.144    0.245
+                                        FP q=U_D + B + lapse (rho free)  4 -4307.994 8623.988   0.000 8652.666   0.000 -4330.673    0.134    0.244
+                        Bayes-optimal Q + softmax (one tau) + B + lapse  3 -4414.302 8834.604 210.616 8856.113 203.446 -4434.728    0.185    0.193
+                         Bayes-optimal Q + probit (one tau) + B + lapse  3 -4417.332 8840.664 216.675 8862.172 209.506 -4437.718    0.186    0.193
+softmax tau_H + B + lapse (Wilson 2014 / DDM threshold_H, choice level)  4 -4333.452 8674.904  50.916 8703.582  50.916 -4355.315    0.140    0.252
+          softmax one tau + B + lapse_H (value-free random exploration)  4 -4314.552 8637.104  13.116 8665.782  13.116 -4339.091    0.137    0.240
+                                            softmax tau_H + B + lapse_H  5 -4308.695 8627.390   3.401 8663.237  10.571 -4335.520    0.133    0.245
+                                       FP q=U_D + B + lapse_H (rho = 8)  4 -4311.420 8630.840   6.852 8659.518   6.852 -4334.095    0.132    0.249
+                                Bayes-optimal Q + softmax + B + lapse_H  4 -4313.782 8635.564  11.576 8664.243  11.576 -4338.309    0.136    0.241
+
+  parameters:
+    FP q=U_D + B + lapse (rho = 8): -1.079 -0.270 -1.567
+    FP q=U_D + B + lapse (rho free): -0.741 -0.260 0.329 -1.567
+    Bayes-optimal Q + softmax (one tau) + B + lapse: 0.996 -0.417 -0.999
+    Bayes-optimal Q + probit (one tau) + B + lapse: 1.499 -0.418 -0.968
+    softmax tau_H + B + lapse (Wilson 2014 / DDM threshold_H, choice level): 0.746 2.114 -0.187 -1.435
+    softmax one tau + B + lapse_H (value-free random exploration): 0.990 -0.325 -1.672 -0.448
+    softmax tau_H + B + lapse_H: 0.847 1.392 -0.238 -1.602 -0.602
+    FP q=U_D + B + lapse_H (rho = 8): -1.347 -0.215 -1.531 -0.869
+    Bayes-optimal Q + softmax + B + lapse_H: 0.963 -0.312 -1.658 -0.455
+
+  P(non-greedy) by cell:
+  cell                                                                     H1-equal  H6-equal
+  model                                                                                      
+  FP q=U_D + B + lapse (rho = 8)                                              0.144     0.245
+  FP q=U_D + B + lapse (rho free)                                             0.134     0.244
+  Bayes-optimal Q + softmax (one tau) + B + lapse                             0.185     0.193
+  Bayes-optimal Q + probit (one tau) + B + lapse                              0.186     0.193
+  softmax tau_H + B + lapse (Wilson 2014 / DDM threshold_H, choice level)     0.140     0.252
+  softmax one tau + B + lapse_H (value-free random exploration)               0.137     0.240
+  softmax tau_H + B + lapse_H                                                 0.133     0.245
+  FP q=U_D + B + lapse_H (rho = 8)                                            0.132     0.249
+  Bayes-optimal Q + softmax + B + lapse_H                                     0.136     0.241
+  OBSERVED                                                                    0.130     0.242
+
+[all games (information bonus where applicable), n=19,200; observed P(ng) H1 = 0.154, H6 = 0.263]
+                                                model  k        LL       AIC    dAIC       BIC    dBIC     cv_LL  pred_H1  pred_H6
+          F2u+e: FP q=U_D + A_H + B + lapse (rho = 8)  5 -9106.337 18222.674   0.000 18261.987   0.000 -9140.441    0.158    0.269
+Bayes-optimal Q + softmax + B + lapse (no free bonus)  3 -9379.185 18764.369 541.695 18787.957 525.970 -9406.926    0.206    0.215
+ Bayes-optimal Q + probit + B + lapse (no free bonus)  3 -9385.018 18776.036 553.362 18799.624 537.637 -9412.854    0.206    0.215
+          Bayes-optimal Q + A_H + softmax + B + lapse  5 -9365.618 18741.235 518.561 18780.549 518.561 -9401.882    0.208    0.217
+               C1+e: Wilson A_H + sigma_H + B + lapse  6 -9139.970 18291.940  69.266 18339.116  77.128 -9175.341    0.157    0.280
+      value-free: softmax one tau + A_H + B + lapse_H  6 -9158.322 18328.644 105.970 18375.820 113.832 -9198.013    0.159    0.263
+                                    C1+e with lapse_H  7 -9129.677 18273.354  50.680 18328.393  66.405 -9167.646    0.154    0.275
+                                   F2u+e with lapse_H  6 -9105.667 18223.333   0.659 18270.509   8.522 -9140.900    0.156    0.271
+
+  parameters:
+    F2u+e: FP q=U_D + A_H + B + lapse (rho = 8): -0.965 -1.439 5.268 -0.392 -1.464
+    Bayes-optimal Q + softmax + B + lapse (no free bonus): 1.210 -0.433 -0.871
+    Bayes-optimal Q + probit + B + lapse (no free bonus): 1.699 -0.420 -0.832
+    Bayes-optimal Q + A_H + softmax + B + lapse: 1.251 -1.420 1.066 -0.435 -0.893
+    C1+e: Wilson A_H + sigma_H + B + lapse: -1.525 6.582 1.041 2.317 -0.348 -1.401
+    value-free: softmax one tau + A_H + B + lapse_H: 1.257 -1.437 3.843 -0.335 -1.573 -0.358
+    C1+e with lapse_H: -1.511 5.679 1.081 1.956 -0.323 -1.469 -0.805
+    F2u+e with lapse_H: -1.009 -1.459 5.272 -0.377 -1.457 -1.291
+
+  P(non-greedy) by cell:
+  cell                                                   H1-equal  H1-unequal  H6-equal  H6-unequal
+  model                                                                                            
+  F2u+e: FP q=U_D + A_H + B + lapse (rho = 8)               0.157       0.159     0.267       0.271
+  Bayes-optimal Q + softmax + B + lapse (no free bonus)     0.208       0.204     0.215       0.215
+  Bayes-optimal Q + probit + B + lapse (no free bonus)      0.208       0.204     0.215       0.215
+  Bayes-optimal Q + A_H + softmax + B + lapse               0.208       0.207     0.215       0.218
+  C1+e: Wilson A_H + sigma_H + B + lapse                    0.157       0.156     0.278       0.281
+  value-free: softmax one tau + A_H + B + lapse_H           0.160       0.158     0.261       0.265
+  C1+e with lapse_H                                         0.155       0.154     0.273       0.277
+  F2u+e with lapse_H                                        0.155       0.157     0.268       0.273
+  OBSERVED                                                  0.130       0.178     0.242       0.285

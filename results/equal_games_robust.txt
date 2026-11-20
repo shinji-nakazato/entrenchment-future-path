@@ -1,0 +1,11 @@
+[games with equal prior observations: robustness of softmax tau_H vs FP q=U_D (both with B and lapse)]
+  pooled dAIC = AIC(softmax tau_H) - AIC(FP) = +27.66
+  subject level AIC: sum diff (softmax - FP) = -39.1; n best: FP q=U_D + B + lapse=33, softmax tau_H + B + lapse=27; PXP softmax=0.499, FP=0.501; BOR=0.862
+  subject level BIC: sum diff (softmax - FP) = +145.5; n best: FP q=U_D + B + lapse=50, softmax tau_H + B + lapse=10; PXP softmax=0.000, FP=1.000; BOR=1.89e-05
+  parametric bootstrap (50 sims; generator = per-subject MLE clipped 10-90 pct, shrunk toward pooled):
+    shrink 0.0, generator FP q=U_D + B + lapse        : dAIC mean   +15.4 (5-95%: +4.1 to +26.0); P(FP chosen) = 0.98; P(dAIC >= observed) = 0.04
+    shrink 0.0, generator softmax tau_H + B + lapse   : dAIC mean   -21.4 (5-95%: -36.2 to -7.8); P(FP chosen) = 0.00; P(dAIC >= observed) = 0.00
+    shrink 0.5, generator FP q=U_D + B + lapse        : dAIC mean   +24.8 (5-95%: +11.1 to +38.9); P(FP chosen) = 1.00; P(dAIC >= observed) = 0.44
+    shrink 0.5, generator softmax tau_H + B + lapse   : dAIC mean   -27.0 (5-95%: -45.2 to -11.1); P(FP chosen) = 0.00; P(dAIC >= observed) = 0.00
+    shrink 1.0, generator FP q=U_D + B + lapse        : dAIC mean   +31.8 (5-95%: +17.0 to +49.4); P(FP chosen) = 1.00; P(dAIC >= observed) = 0.70
+    shrink 1.0, generator softmax tau_H + B + lapse   : dAIC mean    +4.6 (5-95%: -10.9 to +20.1); P(FP chosen) = 0.68; P(dAIC >= observed) = 0.00

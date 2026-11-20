@@ -1,0 +1,46 @@
+=== Parameter recovery, Wilson t=5 (n=19,200), non-greedy likelihood, 200 parameter sets each ===
+[real-data fits]
+  P1 FP (tau, lambda), t=5: 0.0686 0.0297  LL=-9635.96
+  P2 FP (tau, theta), gamma=1, t=5: 0.0808 2.0000  LL=-9637.54
+  P3 FP (tau, theta, gamma), t=5: 0.1225 0.0000 0.6731  LL=-9550.78
+  P4 FP (tau, theta, gamma), all free trials (n=67,200): -0.0705 0.0000 0.6031  LL=-29811.73
+  P5 F2u+e real MLE: -0.9650 -1.4389 5.2681 -0.3917 -1.4642
+
+[recovery summary: correlation true-est, bias, RMSE]
+                                         model    param     r   bias  rmse  sd_true  med_abs_err
+0                     P1 FP (tau, lambda), t=5  log_tau 1.000 -0.002 0.019    0.608        0.013
+1                     P1 FP (tau, lambda), t=5   lambda 0.974 -0.002 0.068    0.300        0.041
+2             P2 FP (tau, theta), gamma=1, t=5  log_tau 1.000  0.001 0.018    0.596        0.012
+3             P2 FP (tau, theta), gamma=1, t=5    theta 0.503  0.034 0.225    0.083        0.010
+4               P3 FP (tau, theta, gamma), t=5  log_tau 0.999 -0.000 0.021    0.576        0.014
+5               P3 FP (tau, theta, gamma), t=5    theta 0.355  0.076 0.275    0.084        0.027
+6               P3 FP (tau, theta, gamma), t=5    gamma 0.966  0.005 0.038    0.145        0.023
+7   P4 FP (tau, theta, gamma), all free trials  log_tau 1.000  0.000 0.014    0.589        0.009
+8   P4 FP (tau, theta, gamma), all free trials    theta 0.289  0.057 0.304    0.085        0.018
+9   P4 FP (tau, theta, gamma), all free trials    gamma 0.985 -0.003 0.028    0.154        0.014
+10  P5 F2u+e (future-path + information bonus)  log_tau 0.996  0.001 0.031    0.328        0.021
+11  P5 F2u+e (future-path + information bonus)     A_H1 0.960  0.026 0.276    0.985        0.187
+12  P5 F2u+e (future-path + information bonus)     A_H6 0.974  0.032 0.478    2.029        0.303
+13  P5 F2u+e (future-path + information bonus)        B 0.881 -0.008 0.160    0.304        0.102
+14  P5 F2u+e (future-path + information bonus)  logit_e 0.993 -0.001 0.050    0.421        0.033
+
+[theta recovery for true theta <= 0.2: median absolute error]
+  P2 FP (tau, theta), gamma=1, t=5: 0.0064
+  P3 FP (tau, theta, gamma), t=5: 0.0169
+  P4 FP (tau, theta, gamma), all free trials: 0.0129
+
+[P3 FP (tau, theta, gamma), t=5: correlation among estimates (ridge diagnostic)]
+             est_log_tau  est_theta  est_gamma
+est_log_tau        1.000     -0.183      0.066
+est_theta         -0.183      1.000     -0.001
+est_gamma          0.066     -0.001      1.000
+
+  share gamma estimate at bound (<0.06 or >0.999): 0.025
+
+[P4 FP (tau, theta, gamma), all free trials: correlation among estimates (ridge diagnostic)]
+             est_log_tau  est_theta  est_gamma
+est_log_tau        1.000      0.059     -0.091
+est_theta          0.059      1.000      0.005
+est_gamma         -0.091      0.005      1.000
+
+  share gamma estimate at bound (<0.06 or >0.999): 0.010

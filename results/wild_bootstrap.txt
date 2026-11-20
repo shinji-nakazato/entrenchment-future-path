@@ -1,0 +1,10 @@
+Pooled logit wild cluster bootstrap (Rademacher, B=999, seed=20240625)
+n = 96,120;  clusters G = 221  (Wilson 60 + Wu1D 81 + Wu2D 80)
+cluster sizes: min 120, median 240, max 1120;  Herfindahl effective #clusters G_eff = 114.0
+
+coef           beta  clustSE       z    WCB p            WCB 95% CI
+-------------------------------------------------------------------
+Intercept    -1.128    0.117   -9.67    0.001   [-1.356, -0.893]
+log_A         0.248    0.046    5.41    0.001   [+0.158, +0.341]
+log_D         0.879    0.052   16.85    0.001   [+0.768, +0.981]
+dmu_std      -0.740    0.081   -9.13    0.001   [-0.892, -0.595]

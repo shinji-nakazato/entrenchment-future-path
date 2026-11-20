@@ -1,0 +1,28 @@
+model,theta
+softmax (mu),2.5102
+Thompson (tempered),0.9205
+UCB-softmax,0.7659 2.5083
+"future-path, q=U_D",-0.0194
+"future-path, calib. q",0.0686 -3.4873
+softmax (per-H tau),2.1734 2.8062
+"C0  softmax, tau_H + B",2.1739 2.8044 -0.4412
+"C3  Thompson, tau_H + B",0.6386 1.1766 -0.4121
+"C2  UCB, beta_H + tau_H + B",-0.3135 2.1425 2.1707 2.7867 -0.4577
+"C1  Wilson, A_H + sigma_H + B",-1.0601 7.2442 2.1707 2.7867 -0.4577
+"C1' Wilson, A_H + sigma_HxI + B",-1.0346 7.8134 2.0394 2.6674 2.2879 2.9039 -0.4175
+"C4  Gershman, w_H + b",-0.0280 -0.0201 -0.0153 0.0763 0.7708 0.4843 -0.0300
+F1  future-path calib. q + B,0.0685 -3.5011 -0.3788
+F2  future-path calib. q + A_H + B,0.0653 -3.7329 -0.9513 8.0747 -0.3917
+F2u future-path q=U_D + A_H + B,-0.0227 -0.9610 9.0964 -0.3055
+L1  C1 with probit link,-0.9462 7.3236 2.7946 3.3191 -0.4624
+L2  F1 with logistic link,-0.5574 -2.2329 -0.3989
+L3  F2 with logistic link,-0.5604 -2.3968 -1.0713 7.4113 -0.4128
+"C0+e softmax, tau_H + B + lapse",1.0516 2.2965 -0.3758 -1.3532
+"C3+e Thompson, tau_H + B + lapse",-0.5755 0.6692 -0.3624 -1.3245
+"C2+e UCB, beta_H + tau_H + B + lapse",-0.4510 1.9467 1.0415 2.3167 -0.3482 -1.4007
+"C1+e Wilson, A_H + sigma_H + B + lapse",-1.5248 6.5820 1.0415 2.3167 -0.3482 -1.4007
+"C1'+e Wilson, A_H + sigma_HxI + B + lapse",-1.4127 7.2070 0.7350 2.0966 1.3180 2.5040 -0.3028 -1.4077
+"C4+e Gershman, w_H + b + lapse",-0.6470 -0.1136 -0.0682 0.1080 7.4993 1.5027 -0.0697 -1.3486
+F1+e future-path calib. q + B + lapse,-0.9560 30.3193 -0.3983 -1.4432
+F2u+e future-path q=U_D + A_H + B + lapse,-0.9650 -1.4389 5.2681 -0.3917 -1.4642
+F0+e future-path lambda=0 + A_H + B + lapse,-0.7866 -1.3570 6.0777 -0.4402 -1.2888
