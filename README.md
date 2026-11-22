@@ -56,8 +56,8 @@ GP-UCB simulation). `run_ucb_baseline.py` writes it and then summarizes it into
 │                               and the published per-participant parameter estimates
 ├── results/                    generated outputs
 │   └── figs/                   fig_horizon_effect.{pdf,png} (Figure 1),
-│                               fig_cross_dataset.{pdf,png} (Figure D.1),
-│                               fig_wu_appendix.{pdf,png} (Figure I.1)
+│                               fig_cross_dataset.{pdf,png} (Figure 2),
+│                               fig_wu_appendix.{pdf,png} (Figure 3)
 ├── requirements.txt
 └── README.md
 ```
@@ -86,7 +86,7 @@ GP-UCB simulation). `run_ucb_baseline.py` writes it and then summarizes it into
 | Appendix B, Table B.1 | `run_probit_error_horizons.py` | `probit_error_horizons.txt` |
 | Appendix D, Table D.1 (Wu specification; V_q in units of the observation-noise variance) | `run_indicator.py` | `indicator.txt` |
 | Appendix D: mean V_q 1.21 and 2.04 under the prior-variance-1 specification | `run_pooled_logit.py` | `cross_dataset_Aok.csv` |
-| Figure D.1 | `run_fig_cross_dataset.py` | `figs/fig_cross_dataset.{pdf,png}`, `fig_cross_dataset_data.txt` |
+| Figure 2 | `run_fig_cross_dataset.py` | `figs/fig_cross_dataset.{pdf,png}`, `fig_cross_dataset_data.txt` |
 | Appendix E, Table E.1 | `run_calib_sensitivity.py` | `calib_sensitivity_grid.csv` |
 | Appendix F, Table F.1 and robustness to the standardization of the gap | `run_pooled_logit.py` | `pooled_logit.txt`, `pooled_logit_robust.txt` |
 | Appendix F: within-task pseudo R^2, task fixed effects, collinearity, correlation of V_q and the gap | `run_pooled_fe.py` | `pooled_fe.txt` |
@@ -102,7 +102,7 @@ GP-UCB simulation). `run_ucb_baseline.py` writes it and then summarizes it into
 | Appendix I, Table I.1 | `run_wu_multinomial.py` | `wu_mn_models.txt` |
 | Appendix I, Table I.2 | `run_indicator.py` | `indicator.txt` |
 | Appendix I, Table I.3 | `run_prior_lockin.py` | `prior_lockin.txt` |
-| Figure I.1 | `run_fig_wu_appendix.py` | `figs/fig_wu_appendix.{pdf,png}`, `fig_wu_appendix_data.txt` |
+| Figure 3 | `run_fig_wu_appendix.py` | `figs/fig_wu_appendix.{pdf,png}`, `fig_wu_appendix_data.txt` |
 
 Table 3 and Table 5 combine rows from several output files. The differences in AIC and
 BIC in these tables are taken relative to the future-path model with estimated rho:
@@ -380,10 +380,10 @@ minutes on 20 cores. Output: `shape_test.txt`.
 
 #### `run_fig_horizon_effect.py`
 
-Figure 1. Panel A: games with equal prior observations, split into quintiles of the
+Figure 1. Panel a: games with equal prior observations, split into quintiles of the
 posterior-mean gap; the observed horizon effect and the values predicted by the
 future-path model (rho free), value-free random exploration, and the horizon-specific
-softmax. Panel B: P(non-greedy) by information condition and horizon, observed and
+softmax. Panel b: P(non-greedy) by information condition and horizon, observed and
 predicted by the same models with an information bonus. Observed 95% intervals are
 from a participant-level bootstrap (2,000 resamples). Outputs:
 `figs/fig_horizon_effect.{pdf,png}`, `fig_horizon_effect_data.txt` (fits, plotted
@@ -517,7 +517,7 @@ persistence on the worse arm depends on it. Output: `prior_lockin.txt`.
 
 #### `run_fig_wu_appendix.py`
 
-Figure I.1, under the Wu specification, from `indicator_wu_pertrial.csv`. Left:
+Figure 3, under the Wu specification, from `indicator_wu_pertrial.csv`. Left:
 non-greedy rate by 8 within-dataset quantile bins of the posterior-mean gap at A >= 2,
 with 95% binomial intervals. Right: mean V_q by remaining horizon A, split by dataset
 and horizon condition T. `python run_fig_wu_appendix.py priorvar1` draws the same
@@ -529,7 +529,7 @@ counts, rates and V_q by A, the 2D/1D ratio of V_q).
 
 #### `run_fig_cross_dataset.py`
 
-Figure D.1: non-greedy rate against A by dataset (left) and at A >= 2 against |D|
+Figure 2: non-greedy rate against A by dataset (left) and at A >= 2 against |D|
 (right). The Wilson trials come from `all_pertrial.csv`; the Wu trials come from
 `indicator_wu_pertrial.csv` under the Wu specification. Outputs:
 `figs/fig_cross_dataset.{pdf,png}`, `fig_cross_dataset_data.txt`.

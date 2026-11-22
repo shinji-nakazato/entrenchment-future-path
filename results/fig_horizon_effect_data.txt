@@ -9,7 +9,7 @@ equal    horizon-specific noise (Wilson et al.)  4 -4333.5  8674.9
   all value-free random exploration (epsilon_H)  6 -9158.3 18328.6
   all    horizon-specific noise (Wilson et al.)  6 -9140.0 18291.9
 
-[A: horizon effect by posterior-gap quintile, equal games]
+[a: horizon effect by posterior-gap quintile, equal games]
  non_greedy  future-path (rho free)  value-free random exploration (epsilon_H)  horizon-specific noise (Wilson et al.)    lo    hi       bin  n_H1  n_H6
       0.085                   0.090                                      0.052                                   0.143 0.042 0.128   0.0–5.4   915  1005
       0.160                   0.148                                      0.103                                   0.202 0.103 0.213  5.4–10.5  1042   902
@@ -17,7 +17,7 @@ equal    horizon-specific noise (Wilson et al.)  4 -4333.5  8674.9
       0.108                   0.095                                      0.116                                   0.059 0.075 0.142 17.5–25.5   900   888
       0.090                   0.085                                      0.116                                   0.019 0.058 0.121 25.5–55.5   932   960
 
-[B: P(non-greedy) by information cell x H, all games]
+[b: P(non-greedy) by information cell x H, all games]
  non_greedy  future-path (rho free)  value-free random exploration (epsilon_H)  horizon-specific noise (Wilson et al.)    lo    hi                                     cell  H    n
       0.130                   0.150                                      0.160                                   0.157 0.097 0.169                 equal prior observations  1 4800
       0.242                   0.265                                      0.261                                   0.278 0.206 0.281                 equal prior observations  6 4800

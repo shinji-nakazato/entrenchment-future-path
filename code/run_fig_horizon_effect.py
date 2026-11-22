@@ -6,6 +6,7 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+plt.rcParams.update({'font.family': 'Arial', 'mathtext.fontset': 'custom', 'mathtext.rm': 'Arial', 'mathtext.it': 'Arial:italic', 'mathtext.bf': 'Arial:bold', 'pdf.fonttype': 42})
 
 import wilson_choice as m1
 from wilson_choice import build_first_free, as_dict, fit
@@ -103,9 +104,9 @@ def main():
     right['H'] = [h for _, h in keys]
     right['n'] = [int(((R.cell == c) & (R.H == h)).sum()) for c, h in keys]
 
-    fig = plt.figure(figsize=(7.2, 3.4))
-    gs = fig.add_gridspec(1, 5, width_ratios=[2.4, 0.35, 1, 1, 1], wspace=0.15)
-    ax = fig.add_subplot(gs[0, 0])
+    fig = plt.figure(figsize=(5.15, 4.8))
+    gs = fig.add_gridspec(2, 3, height_ratios=[1, 1], hspace=0.8, wspace=0.12)
+    ax = fig.add_subplot(gs[0, :])
     x = np.arange(5)
     for (name, col, ls, mk), lab in zip(MODELS, LABELS):
         ax.plot(x, left[name], color=col, ls=ls, lw=2, marker=mk, ms=4.5, label=lab, zorder=2)
@@ -115,11 +116,10 @@ def main():
     ax.set_xticks(x, left['bin'])
     ax.set_xlabel('Posterior-mean gap (quintile range, points)', fontsize=8, color=INK)
     ax.set_ylabel('Horizon effect ($H = 6$ minus $H = 1$)', fontsize=8, color=INK)
-    ax.set_title('A  Games with equal prior observations', fontsize=9, loc='left', color=INK)
+    ax.set_title(r'$\bf{a}$  Games with equal prior observations', fontsize=9, loc='left', color=INK)
     style(ax)
-    ax.tick_params(axis='x', labelsize=6.5)
 
-    axs = [fig.add_subplot(gs[0, 2 + i]) for i in range(3)]
+    axs = [fig.add_subplot(gs[1, i]) for i in range(3)]
     for i, (a, (c, title)) in enumerate(zip(axs, CELLS)):
         sub = right[right.cell == c]
         xh = np.array([0, 1])
@@ -130,19 +130,19 @@ def main():
         a.set_xticks(xh, ['$H = 1$', '$H = 6$'])
         a.set_xlim(-0.4, 1.4)
         a.set_ylim(0.05, 0.45)
-        a.set_title(title, fontsize=7.5, color=INK)
+        a.set_title(title, fontsize=8, color=INK)
         style(a)
         if i:
             a.tick_params(labelleft=False)
         else:
             a.set_ylabel('P(non-greedy)', fontsize=8, color=INK)
-    axs[0].annotate('B  All games, by information condition', xy=(0, 1.22), xycoords='axes fraction',
+    axs[0].annotate(r'$\bf{b}$  All games, by information condition', xy=(0, 1.32), xycoords='axes fraction',
                     fontsize=9, color=INK)
     h, l = ax.get_legend_handles_labels()
     order = [3, 0, 1, 2]
     fig.legend([h[k] for k in order], [l[k] for k in order], loc='lower center', ncol=2, frameon=False,
-               fontsize=7.5, bbox_to_anchor=(0.5, 0.0))
-    fig.subplots_adjust(left=0.08, right=0.99, top=0.82, bottom=0.30)
+               fontsize=8, bbox_to_anchor=(0.5, 0.0))
+    fig.subplots_adjust(left=0.12, right=0.98, top=0.94, bottom=0.16)
     for ext in ('pdf', 'png'):
         fig.savefig(FIGS / f'fig_horizon_effect.{ext}', dpi=300)
     plt.close(fig)
@@ -150,8 +150,8 @@ def main():
     fmt = lambda v: f'{v:.3f}'
     txt = '\n'.join(['Figure data (Wilson first free choice; pooled MLE; observed CI = subject bootstrap, '
                      f'{N_BOOT} resamples)', '', '[model fits]', fits.to_string(index=False, float_format=lambda v: f'{v:.1f}'), '',
-                     '[A: horizon effect by posterior-gap quintile, equal games]', left.to_string(index=False, float_format=fmt), '',
-                     '[B: P(non-greedy) by information cell x H, all games]', right.to_string(index=False, float_format=fmt)])
+                     '[a: horizon effect by posterior-gap quintile, equal games]', left.to_string(index=False, float_format=fmt), '',
+                     '[b: P(non-greedy) by information cell x H, all games]', right.to_string(index=False, float_format=fmt)])
     (OUT / 'fig_horizon_effect_data.txt').write_text(txt, encoding='utf-8')
     print(txt)
 

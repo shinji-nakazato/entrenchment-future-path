@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+plt.rcParams.update({'font.family': 'Arial', 'font.size': 8, 'mathtext.fontset': 'custom', 'mathtext.rm': 'Arial', 'mathtext.it': 'Arial:italic', 'mathtext.bf': 'Arial:bold', 'pdf.fonttype': 42})
 
 from config import RESULTS
 
@@ -24,23 +25,28 @@ def load():
 
 def main():
     df = load()
-    fig, ax = plt.subplots(1, 2, figsize=(12, 4.5))
+    fig, ax = plt.subplots(1, 2, figsize=(5.15, 2.5))
     colors = {'Wilson': 'tab:blue', 'Wu 1D': 'tab:orange', 'Wu 2D': 'tab:purple'}
+    markers = {'Wilson': 'o', 'Wu 1D': 's', 'Wu 2D': '^'}
     for d in ('Wilson', 'Wu 1D', 'Wu 2D'):
         sub = df[df.dataset == d]
         agg = sub.groupby('A').non_greedy.mean().reset_index()
-        ax[0].plot(agg['A'], agg['non_greedy'], 'o-', color=colors[d], label=f'{d} (|D|={int(sub.Dsize.iloc[0])})')
+        ax[0].plot(agg['A'], agg['non_greedy'], '-', marker=markers[d], markersize=3.5, linewidth=1.2, color=colors[d], label=f'{d} (|D|={int(sub.Dsize.iloc[0])})')
     ax[0].set_xlabel('$A$ (remaining horizon)')
     ax[0].set_ylabel('Empirical P(non-greedy)')
     ax[0].set_ylim(0, 1.0)
-    ax[0].legend()
+    ax[0].legend(fontsize=8, loc='center right')
     aok = df[df.A >= 2].groupby(['dataset', 'Dsize']).non_greedy.agg(['mean', 'size']).reset_index().sort_values('Dsize')
-    ax[1].plot(aok['Dsize'], aok['mean'], 'o-', color='black', markersize=10, linewidth=2)
+    ax[1].plot(aok['Dsize'], aok['mean'], 'o-', color='black', markersize=6, linewidth=1.5)
+    place = {'Wilson': ((7, 0), 'left', 'center'), 'Wu 1D': ((4, -6), 'left', 'top'), 'Wu 2D': ((0, -8), 'center', 'top')}
     for _, r in aok.iterrows():
-        ax[1].annotate(f"{r['dataset']}\n{r['mean']:.3f}", (r['Dsize'], r['mean']), xytext=(8, -8), textcoords='offset points', fontsize=9)
+        off, ha, va = place[r['dataset']]
+        ax[1].annotate(f"{r['dataset']}\n{r['mean']:.3f}", (r['Dsize'], r['mean']), xytext=off, textcoords='offset points',
+                       fontsize=8, ha=ha, va=va)
     ax[1].set_xlabel(r'$|D|$ (number of options)')
     ax[1].set_ylabel(r'Mean P(non-greedy) at $A \geq 2$')
     ax[1].set_ylim(0, 1.05)
+    ax[1].set_xlim(-5, 145)
     ax[1].grid(True, which='both', alpha=0.3)
     plt.tight_layout()
     for ext in ('pdf', 'png'):

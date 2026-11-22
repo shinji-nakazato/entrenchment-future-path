@@ -6,6 +6,7 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+plt.rcParams.update({'font.family': 'Arial', 'font.size': 8, 'mathtext.fontset': 'custom', 'mathtext.rm': 'Arial', 'mathtext.it': 'Arial:italic', 'mathtext.bf': 'Arial:bold', 'pdf.fonttype': 42})
 
 from config import RESULTS
 
@@ -40,21 +41,21 @@ def main():
     byT = R.groupby(['dataset', 'T', 'A']).agg(V_q=('V_q', 'mean'), n=('V_q', 'size')).reset_index()
     byA = R.groupby(['dataset', 'A']).agg(ng=('non_greedy', 'mean'), V_q=('V_q', 'mean'), n=('non_greedy', 'size')).reset_index()
 
-    fig, ax = plt.subplots(1, 2, figsize=(12, 4))
+    fig, ax = plt.subplots(1, 2, figsize=(5.15, 2.5))
     for ds, (c, mk, lab) in STYLE.items():
         g = G[G.dataset == ds]
         ci = 1.96 * np.sqrt(g.emp * (1 - g.emp) / g.n)
-        ax[0].errorbar(g.x, g.emp, yerr=ci, fmt='-', color=c, marker=mk, capsize=2, label=lab)
+        ax[0].errorbar(g.x, g.emp, yerr=ci, fmt='-', color=c, marker=mk, capsize=1.5, markersize=3.5, linewidth=1.2, label=lab)
         for T in sorted(byT[byT.dataset == ds]['T'].unique()):
             s = byT[(byT.dataset == ds) & (byT['T'] == T)].sort_values('A')
-            ax[1].plot(s.A, s.V_q, color=c, linestyle=TSTYLE.get(T, '-'), marker=mk, markersize=4, alpha=0.85, label=f'{lab}, T={T}')
+            ax[1].plot(s.A, s.V_q, color=c, linestyle=TSTYLE.get(T, '-'), marker=mk, markersize=2.5, linewidth=1.0, alpha=0.85, label=f'{lab}, T={T}')
     ax[0].set_xlabel(r'Posterior-mean gap $\Delta\mu_{t-1}(x^\star_t, x)$')
     ax[0].set_ylabel('P(non-greedy)')
     ax[0].set_ylim(0, 1.0)
     ax[0].legend(fontsize=8)
     ax[1].set_xlabel('$A$ (remaining horizon)')
     ax[1].set_ylabel(r'$V_q$ ($q = U_D$)')
-    ax[1].legend(fontsize=8)
+    ax[1].legend(fontsize=8, loc='lower right')
     plt.tight_layout()
     stem = 'fig_wu_appendix' if SPEC == 'wu' else f'fig_wu_appendix_{SPEC}'
     for ext in ('pdf', 'png'):
